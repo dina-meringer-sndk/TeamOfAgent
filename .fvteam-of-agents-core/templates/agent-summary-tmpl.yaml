@@ -1,0 +1,180 @@
+<!-- Powered by FVTeamOfAgents Core -->
+template:
+  id: agent-summary-template-v1
+  name: Agent Creation Summary
+  version: 1.0
+  output:
+    format: markdown
+    filename: {{agent_id}}_creation_summary.md
+    title: "{{agent_name}} Creation Summary"
+
+workflow:
+  mode: interactive
+  elicitation: advanced-elicitation
+
+sections:
+  - id: header
+    title: Header
+    type: template-text
+    template: |
+      # {{agent_name}} Creation Summary
+
+      **Agent ID**: {{agent_id}}  
+      **Created**: {{creation_date}}  
+      **Factory Version**: {{factory_version}}
+    instruction: Generate summary header with key metadata
+
+  - id: agent-overview
+    title: Agent Overview
+    type: structured
+    template: |
+      ## Agent Overview
+
+      **Purpose**: {{agent_purpose}}
+
+      **Role**: {{agent_role}}
+
+      **When to Use**: {{when_to_use}}
+
+      **Primary Users**: {{target_users}}
+    instruction: Summarize the core agent definition
+
+  - id: requirements-summary
+    title: Requirements Summary
+    type: structured
+    template: |
+      ## Requirements Gathered
+
+      ### Workflows Identified
+      {{#workflows}}
+      - **{{name}}**: {{description}}
+      {{/workflows}}
+
+      ### Content Generation Needs
+      {{#content_types}}
+      - **{{name}}**: {{description}}
+      {{/content_types}}
+
+      ### Validation Requirements
+      {{#validations}}
+      - **{{name}}**: {{description}}
+      {{/validations}}
+
+      ### Knowledge Base Needs
+      {{#knowledge_areas}}
+      - **{{name}}**: {{description}}
+      {{/knowledge_areas}}
+
+      ### File Operations
+      {{#file_operations}}
+      - **{{name}}**: {{description}}
+      {{/file_operations}}
+    instruction: Document all requirements gathered during brainstorming
+
+  - id: files-created
+    title: Files Created
+    type: structured
+    template: |
+      ## Files Created
+
+      ### Agent Prompt
+      - `.bmad-core/agents/{{agent_id}}.md` - Main agent definition
+
+      ### Task Files
+      {{#task_files}}
+      - `.bmad-core/tasks/{{filename}}` - {{description}}
+      {{/task_files}}
+
+      ### Template Files
+      {{#template_files}}
+      - `.bmad-core/templates/{{filename}}` - {{description}}
+      {{/template_files}}
+
+      ### Checklist Files
+      {{#checklist_files}}
+      - `.bmad-core/checklists/{{filename}}` - {{description}}
+      {{/checklist_files}}
+
+      ### Data Files
+      {{#data_files}}
+      - `.bmad-core/data/{{filename}}` - {{description}}
+      {{/data_files}}
+
+      ### Utility Files
+      {{#utility_files}}
+      - `.bmad-core/utils/{{filename}}` - {{description}}
+      {{/utility_files}}
+    instruction: Document all files created in the ecosystem
+
+  - id: usage-instructions
+    title: Usage Instructions
+    type: structured
+    template: |
+      ## Usage Instructions
+
+      ### Activation
+      ```
+      Load agent: {{agent_id}}
+      ```
+
+      ### Available Commands
+      {{#commands}}
+      - `*{{command}}` - {{description}}
+      {{/commands}}
+
+      ### Typical Workflow
+      {{#workflow_steps}}
+      {{step_number}}. {{step_description}}
+      {{/workflow_steps}}
+    instruction: Provide clear usage instructions for the new agent
+
+  - id: design-decisions
+    title: Design Decisions
+    type: bullet-list
+    template: |
+      ## Design Decisions
+
+      {{#design_decisions}}
+      - {{.}}
+      {{/design_decisions}}
+    instruction: Document key design decisions made during creation
+    elicit: true
+
+  - id: extension-points
+    title: Extension Points
+    type: bullet-list
+    template: |
+      ## Future Extensions
+
+      {{#extension_points}}
+      - {{.}}
+      {{/extension_points}}
+    instruction: Document areas where the agent could be extended
+    elicit: true
+
+  - id: validation-results
+    title: Validation Results
+    type: structured
+    template: |
+      ## Validation Results
+
+      ### BMAD Compliance
+      {{bmad_compliance_status}}
+
+      ### Agent Creation Checklist
+      {{creation_checklist_status}}
+
+      ### Test Results
+      {{test_results}}
+    instruction: Document validation and testing results
+
+  - id: next-steps
+    title: Next Steps
+    type: bullet-list
+    template: |
+      ## Next Steps
+
+      {{#next_steps}}
+      - {{.}}
+      {{/next_steps}}
+    instruction: Suggest next steps for agent deployment and usage

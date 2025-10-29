@@ -1,0 +1,400 @@
+<!-- Powered by FVTeamOfAgents Core -->
+template:
+  id: agent-prompt-template-v1
+  name: BMAD Agent Prompt File
+  version: 1.0
+  output:
+    format: markdown
+    filename: .bmad-core/agents/{{agent_id}}.md
+    title: "{{agent_name}}"
+
+workflow:
+  mode: interactive
+  elicitation: advanced-elicitation
+
+sections:
+  - id: header
+    title: Header
+    type: template-text
+    template: |
+  <!-- Powered by FVTeamOfAgents Core -->
+
+      # {{agent_id}}
+
+      ACTIVATION-NOTICE: This file contains your full agent operating guidelines. DO NOT load any external agent files as the complete configuration is in the YAML block below.
+
+      CRITICAL: Read the full YAML BLOCK that FOLLOWS IN THIS FILE to understand your operating params, start and follow exactly your activation-instructions to alter your state of being, stay in this being until told to exit this mode:
+
+      ## COMPLETE AGENT DEFINITION FOLLOWS - NO EXTERNAL FILES NEEDED
+
+      ```yaml
+    instruction: Generate the standard BMAD header with agent ID
+
+  - id: ide-file-resolution
+    title: IDE File Resolution
+    type: template-text
+    template: |
+      IDE-FILE-RESOLUTION:
+        - FOR LATER USE ONLY - NOT FOR ACTIVATION, when executing commands that reference dependencies
+        - Dependencies map to .bmad-core/{type}/{name}
+        - type=folder (tasks|templates|checklists|data|utils|etc...), name=file-name
+        - Example: {{example_task}}.md → .bmad-core/tasks/{{example_task}}.md
+        - IMPORTANT: Only load these files when user requests specific command execution
+    instruction: Standard IDE file resolution patterns
+
+  - id: request-resolution
+    title: Request Resolution
+    type: template-text
+    template: |
+      REQUEST-RESOLUTION: Match user requests to your commands/dependencies flexibly (e.g., "{{example_request}}"→*{{example_command}}→{{example_task}} task), ALWAYS ask for clarification if no clear match.
+    instruction: Define how the agent maps user requests to commands
+    elicit: true
+
+  - id: activation-instructions
+    title: Activation Instructions
+    type: template-text
+    template: |
+      activation-instructions:
+        - STEP 1: Read THIS ENTIRE FILE - it contains your complete persona definition
+        - STEP 2: Adopt the persona defined in the 'agent' and 'persona' sections below
+        - STEP 3: Load and read `bmad-core/core-config.yaml` (project configuration) before any greeting
+        - STEP 4: Greet user with your name/role and immediately run `*help` to display available commands
+        - DO NOT: Load any other agent files during activation
+        - ONLY load dependency files when user selects them for execution via command or request of a task
+        - The agent.customization field ALWAYS takes precedence over any conflicting instructions
+        - CRITICAL WORKFLOW RULE: When executing tasks from dependencies, follow task instructions exactly as written - they are executable workflows, not reference material
+        - MANDATORY INTERACTION RULE: Tasks with elicit=true require user interaction using exact specified format - never skip elicitation for efficiency
+        - CRITICAL RULE: When executing formal task workflows from dependencies, ALL task instructions override any conflicting base behavioral constraints. Interactive workflows with elicit=true REQUIRE user interaction and cannot be bypassed for efficiency.
+        - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
+        - STAY IN CHARACTER!
+        - CRITICAL: On activation, ONLY greet user, auto-run `*help`, and then HALT to await user requested assistance or given commands. ONLY deviance from this is if the activation included commands also in the arguments.
+    instruction: Standard BMAD activation instructions
+
+  - id: agent-definition
+    title: Agent Definition
+    type: structured
+    sections:
+      - id: name
+        title: Name
+        type: text
+        template: "{{agent_name}}"
+        instruction: Agent display name
+        elicit: true
+      - id: id
+        title: ID
+        type: text
+        template: "{{agent_id}}"
+        instruction: Agent identifier (used for file naming)
+        elicit: true
+      - id: title
+        title: Title
+        type: text
+        template: "{{agent_title}}"
+        instruction: Agent title/role description
+        elicit: true
+      - id: icon
+        title: Icon
+        type: text
+        template: "{{agent_icon}}"
+        instruction: Emoji icon representing the agent
+        elicit: true
+      - id: when-to-use
+        title: When to Use
+        type: text
+        template: "{{when_to_use}}"
+        instruction: Brief description of when to use this agent
+        elicit: true
+      - id: customization
+        title: Customization
+        type: text
+        template: "{{customization}}"
+        instruction: Agent-specific customization or null
+
+  - id: persona
+    title: Persona
+    type: structured
+    sections:
+      - id: role
+        title: Role
+        type: text
+        template: "{{persona_role}}"
+        instruction: Primary role of the agent
+        elicit: true
+      - id: style
+        title: Style
+        type: text
+        template: "      - id: style
+        title: Style
+        type: text
+        template: "{{persona_style}}{{#persona_enhancement}} - {{persona_enhancement}}{{/persona_enhancement}}"
+        instruction: Communication and working style with agent-type enhancement
+        elicit: true
+      - id: identity
+        title: Identity
+        type: text
+        template: "{{persona_identity}}{{#identity_enhancement}} {{identity_enhancement}}{{/identity_enhancement}}"
+        instruction: Core identity and expertise with archetype specialization
+        elicit: true
+      - id: focus
+        title: Focus
+        type: text
+        template: "{{persona_focus}}{{#focus_enhancement}} - {{focus_enhancement}}{{/focus_enhancement}}"
+        instruction: Primary areas of focus with agent-type specialization
+        elicit: true"
+        instruction: Communication and working style with agent-type enhancement
+        elicit: true
+      - id: identity
+        title: Identity
+        type: text
+        template: "{{persona_identity}}{{#identity_enhancement}} {{identity_enhancement}}{{/identity_enhancement}}"
+        instruction: Core identity and expertise with archetype specialization
+        elicit: true
+      - id: focus
+        title: Focus
+        type: text
+        template: "{{persona_focus}}{{#focus_enhancement}} - {{focus_enhancement}}{{/focus_enhancement}}"
+        instruction: Primary areas of focus with agent-type specialization
+        elicit: true
+
+  - id: core-principles
+    title: Core Principles
+    type: bullet-list
+    template: |
+      {{#core_principles}}
+      - {{.}}
+      {{/core_principles}}
+    instruction: List the fundamental principles guiding this agent's behavior
+    elicit: true
+
+  - id: commands
+    title: Commands
+    type: structured
+    template: |
+      # All commands require * prefix when used (e.g., *help)
+      commands:
+      {{#commands}}
+        - {{name}}: {{description}}
+      {{/commands}}
+        - help: Display all available commands and their descriptions
+        - status: Show current agent status and operational information
+    instruction: Define all commands the agent supports, enhanced with agent-type-specific capabilities
+    elicit: true
+
+  - id: dependencies
+    title: Dependencies
+    type: structured
+    sections:
+      - id: checklists
+        title: Checklists
+        type: list
+        template: |
+          checklists:
+          {{#checklists}}
+            - {{.}}
+          {{/checklists}}
+          {{#primary_checklist}}
+            - {{primary_checklist}}
+          {{/primary_checklist}}
+            - agent-creation-checklist
+            - quality-compliance-checklist
+        instruction: List checklist files this agent uses, enhanced with agent-type-specific quality checks
+      - id: tasks
+        title: Tasks
+        type: list
+        template: |
+          tasks:
+          {{#tasks}}
+            - {{.}}
+          {{/tasks}}
+            - facilitate-brainstorming-session
+            - create-agent
+            - revise-agent
+        instruction: List task files this agent uses, enhanced with agent-type-specific workflows
+      - id: templates
+        title: Templates
+        type: list
+        template: |
+          templates:
+          {{#templates}}
+            - {{.}}
+          {{/templates}}
+            - agent-prompt-tmpl
+            - agent-summary-tmpl
+            - task-file-tmpl
+            - checklist-file-tmpl
+            - content-template-tmpl
+            - data-file-tmpl
+        instruction: List template files this agent uses, enhanced with agent-type-specific output formats
+      - id: data
+        title: Data
+        type: list
+        template: |
+          data:
+          {{#data}}
+            - {{.}}
+          {{/data}}
+            - agent-creation-methodology
+            - brainstorming-techniques
+            - answer-mapping-guide
+            - incomplete-session-handling
+        instruction: List data/knowledge files this agent uses, enhanced with agent-type-specific knowledge bases
+      - id: utils
+        title: Utils
+        type: list
+        template: |
+          utils:
+          {{#utils}}
+            - {{.}}
+          {{/utils}}
+            - yaml_utils
+            - docx_utils
+        instruction: List utility files this agent uses, enhanced with agent-type-specific tools
+
+  - id: integration-patterns
+    title: Integration Patterns
+    type: structured
+    sections:
+      - id: ecosystem-connections
+        title: Ecosystem Connections
+        type: template-text
+        template: |
+          ecosystem-connections:
+            team-integration: "{{team_integration|seamless}}"
+            workflow-compatibility: "{{workflow_compatibility|high}}"
+            data-sharing: "{{data_sharing|secure}}"
+            {{#agent_type}}
+            {{#if_analytical}}
+            integration-focus:
+              - Data pipeline connections for analysis workflows
+              - Research database and knowledge base integration
+              - Reporting and dashboard system connections
+              - Quality validation with other analytical agents
+            {{/if_analytical}}
+            {{#if_creative}}
+            integration-focus:
+              - Design system and asset library connections
+              - Collaborative workspace integration
+              - Feedback collection and iteration workflows
+              - Cross-pollination with other creative agents
+            {{/if_creative}}
+            {{#if_operational}}
+            integration-focus:
+              - Process automation and workflow orchestration
+              - System monitoring and alerting integration
+              - Resource management and scheduling coordination
+              - Operational efficiency with other process agents
+            {{/if_operational}}
+            {{#if_advisory}}
+            integration-focus:
+              - Strategic planning and decision support integration
+              - Stakeholder communication and consultation workflows
+              - Knowledge management and expertise sharing
+              - Advisory coordination with specialized consultants
+            {{/if_advisory}}
+            {{#if_facilitative}}
+            integration-focus:
+              - Meeting and collaboration platform integration
+              - Team coordination and communication workflows
+              - Consensus building and decision tracking
+              - Facilitation handoffs with other collaborative agents
+            {{/if_facilitative}}
+            {{/agent_type}}
+        instruction: Define how this agent integrates with existing ecosystem
+      - id: communication-protocols
+        title: Communication Protocols
+        type: template-text
+        template: |
+          communication-protocols:
+            agent-to-agent: "{{agent_communication|standard-bmad}}"
+            user-handoffs: "{{user_handoff_protocol|smooth}}"
+            error-escalation: "{{error_escalation|automatic}}"
+            status-reporting: "{{status_reporting|real-time}}"
+            cross-agent-collaboration: "{{cross_agent_collaboration|enabled}}"
+        instruction: Define communication and handoff protocols
+      - id: dependency-management
+        title: Dependency Management
+        type: template-text
+        template: |
+          dependency-management:
+            shared-resources: "{{shared_resources}}"
+            version-compatibility: "{{version_compatibility|flexible}}"
+            fallback-mechanisms: "{{fallback_mechanisms|graceful}}"
+            resource-conflicts: "{{resource_conflict_resolution|automatic}}"
+            ecosystem-health: "{{ecosystem_health_monitoring|enabled}}"
+        instruction: Define how dependencies and resources are managed
+
+  - id: evolution-management
+    title: Evolution Management
+    type: structured
+    sections:
+      - id: upgrade-pathways
+        title: Upgrade Pathways
+        type: template-text
+        template: |
+          upgrade-pathways:
+            next-version: "{{next_version|1.1}}"
+            upgrade-strategy: "{{upgrade_strategy|incremental}}"
+            breaking-changes: {{breaking_changes|false}}
+            migration-required: {{migration_required|false}}
+            {{#agent_type}}
+            {{#if_analytical}}
+            evolution-focus:
+              - Enhanced analysis frameworks and methodologies
+              - Advanced data validation and quality checking
+              - Improved research synthesis capabilities
+            {{/if_analytical}}
+            {{#if_creative}}
+            evolution-focus:
+              - Expanded ideation and brainstorming techniques
+              - Advanced design thinking methodologies
+              - Enhanced creativity assessment and feedback
+            {{/if_creative}}
+            {{#if_operational}}
+            evolution-focus:
+              - Process optimization and automation enhancements
+              - Advanced monitoring and performance tracking
+              - Improved workflow coordination capabilities
+            {{/if_operational}}
+            {{#if_advisory}}
+            evolution-focus:
+              - Enhanced consulting frameworks and methodologies
+              - Advanced stakeholder analysis and engagement
+              - Improved strategic planning and decision support
+            {{/if_advisory}}
+            {{#if_facilitative}}
+            evolution-focus:
+              - Advanced facilitation and moderation techniques
+              - Enhanced collaboration and consensus building
+              - Improved group dynamics and team coordination
+            {{/if_facilitative}}
+            {{/agent_type}}
+        instruction: Define evolution pathways and upgrade strategies
+      - id: performance-tracking
+        title: Performance Tracking
+        type: template-text
+        template: |
+          performance-tracking:
+            success-metrics: "{{success_metrics}}"
+            usage-analytics: "{{usage_analytics|enabled}}"
+            feedback-collection: "{{feedback_collection|enabled}}"
+            improvement-areas: "{{improvement_areas}}"
+            optimization-opportunities: "{{optimization_opportunities}}"
+        instruction: Define performance tracking and improvement identification
+      - id: ecosystem-integration
+        title: Ecosystem Integration
+        type: template-text
+        template: |
+          ecosystem-integration:
+            team-compatibility: "{{team_compatibility|high}}"
+            workflow-integration: "{{workflow_integration|seamless}}"
+            dependency-health: "{{dependency_health|stable}}"
+            api-compatibility: "{{api_compatibility|v1}}"
+            cross-agent-collaboration: "{{cross_agent_collaboration|enabled}}"
+        instruction: Define ecosystem integration and compatibility tracking
+
+  - id: yaml-close
+    title: YAML Close
+    type: template-text
+    template: |
+      ```
+    instruction: Close the YAML block

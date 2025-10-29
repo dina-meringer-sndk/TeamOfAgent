@@ -1,0 +1,109 @@
+<!-- Powered by FVTeamOfAgents Core -->
+template:
+  id: checklist-file-template-v1
+  name: BMAD Checklist File
+  version: 1.0
+  output:
+    format: markdown
+    filename: .bmad-core/checklists/{{checklist_name}}-checklist.md
+    title: "{{checklist_title}} Checklist"
+
+workflow:
+  mode: interactive
+  elicitation: advanced-elicitation
+
+sections:
+  - id: header
+    title: Header
+    type: template-text
+    template: |
+  <!-- Powered by FVTeamOfAgents Core -->
+
+      # {{checklist_title}} Checklist
+    instruction: Generate the standard BMAD checklist header
+
+  - id: purpose
+    title: Purpose
+    type: paragraph
+    template: |
+      ## Purpose
+
+      {{checklist_purpose}}
+    instruction: Describe the purpose and scope of this checklist
+    elicit: true
+
+  - id: when-to-use
+    title: When to Use
+    type: paragraph
+    template: |
+      ## When to Use
+
+      {{when_to_use}}
+    instruction: Explain when this checklist should be executed
+    elicit: true
+
+  - id: prerequisites
+    title: Prerequisites
+    type: bullet-list
+    template: |
+      ## Prerequisites
+
+      {{#prerequisites}}
+      - {{.}}
+      {{/prerequisites}}
+    instruction: List any prerequisites before using this checklist
+    elicit: true
+
+  - id: checklist-items
+    title: Checklist Items
+    type: structured-list
+    template: |
+      ## Checklist Items
+
+      {{#categories}}
+      ### {{category_name}}
+
+      {{#items}}
+      - [ ] {{item_text}}
+        {{#details}}
+        - {{.}}
+        {{/details}}
+      {{/items}}
+
+      {{/categories}}
+    instruction: Define the checklist categories and items
+    elicit: true
+
+  - id: validation-criteria
+    title: Validation Criteria
+    type: bullet-list
+    template: |
+      ## Validation Criteria
+
+      {{#validation_criteria}}
+      - {{.}}
+      {{/validation_criteria}}
+    instruction: Define criteria for pass/fail decisions
+    elicit: true
+
+  - id: failure-actions
+    title: Actions on Failure
+    type: bullet-list
+    template: |
+      ## Actions on Failure
+
+      {{#failure_actions}}
+      - {{.}}
+      {{/failure_actions}}
+    instruction: Define what to do if checklist items fail
+    elicit: true
+
+  - id: completion
+    title: Completion
+    type: paragraph
+    template: |
+      ## Completion
+
+      {{completion_criteria}}
+    instruction: Define what constitutes successful checklist completion
+    elicit: true

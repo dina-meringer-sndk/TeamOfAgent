@@ -1,0 +1,82 @@
+<!-- Powered by FVTeamOfAgents Core -->
+template:
+  id: content-template-template-v1
+  name: BMAD Content Template Generator
+  version: 1.0
+  output:
+    format: yaml
+    filename: .bmad-core/templates/{{content_name}}-tmpl.yaml
+    title: "{{content_title}} Template"
+
+workflow:
+  mode: interactive
+  elicitation: advanced-elicitation
+
+sections:
+  - id: template-header
+    title: Template Header
+    type: template-text
+    template: |
+  <!-- Powered by FVTeamOfAgents Core -->
+      template:
+        id: {{template_id}}
+        name: {{template_name}}
+        version: {{template_version}}
+        output:
+          format: {{output_format}}
+          filename: {{output_filename}}
+          title: "{{output_title}}"
+    instruction: Standard template header with metadata
+
+  - id: workflow-config
+    title: Workflow Configuration
+    type: template-text
+    template: |
+      workflow:
+        mode: interactive
+        elicitation: advanced-elicitation
+    instruction: Standard workflow configuration
+
+  - id: template-sections
+    title: Template Sections
+    type: structured-list
+    template: |
+      sections:
+      {{#sections}}
+        - id: {{section_id}}
+          title: {{section_title}}
+          type: {{section_type}}
+          {{#section_template}}
+          template: |
+            {{section_template}}
+          {{/section_template}}
+          instruction: {{section_instruction}}
+          {{#elicit}}
+          elicit: true
+          {{/elicit}}
+          {{#subsections}}
+          sections:
+          {{#.}}
+            - id: {{id}}
+              title: {{title}}
+              type: {{type}}
+              instruction: {{instruction}}
+              {{#elicit}}
+              elicit: true
+              {{/elicit}}
+          {{/.}}
+          {{/subsections}}
+      {{/sections}}
+    instruction: Define the sections and structure for the content template
+    elicit: true
+
+  - id: validation-rules
+    title: Validation Rules
+    type: bullet-list
+    template: |
+      validation:
+      {{#validation_rules}}
+        - {{.}}
+      {{/validation_rules}}
+    instruction: Define any validation rules for the generated content
+    elicit: true

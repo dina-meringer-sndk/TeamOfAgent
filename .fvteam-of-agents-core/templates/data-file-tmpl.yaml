@@ -1,0 +1,108 @@
+<!-- Powered by FVTeamOfAgents Core -->
+template:
+  id: data-file-template-v1
+  name: BMAD Data/Knowledge File
+  version: 1.0
+  output:
+    format: markdown
+    filename: .bmad-core/data/{{data_name}}.md
+    title: "{{data_title}}"
+
+workflow:
+  mode: interactive
+  elicitation: advanced-elicitation
+
+sections:
+  - id: header
+    title: Header
+    type: template-text
+    template: |
+  <!-- Powered by FVTeamOfAgents Core -->
+
+      # {{data_title}}
+    instruction: Generate the standard BMAD data file header
+
+  - id: overview
+    title: Overview
+    type: paragraph
+    template: |
+      ## Overview
+
+      {{data_overview}}
+    instruction: Provide an overview of this knowledge base or data file
+    elicit: true
+
+  - id: purpose
+    title: Purpose
+    type: paragraph
+    template: |
+      ## Purpose
+
+      {{data_purpose}}
+    instruction: Explain why this data/knowledge is needed and how it's used
+    elicit: true
+
+  - id: content-sections
+    title: Content Sections
+    type: structured-list
+    template: |
+      {{#sections}}
+      ## {{section_title}}
+
+      {{section_content}}
+
+      {{#subsections}}
+      ### {{subsection_title}}
+
+      {{subsection_content}}
+
+      {{#items}}
+      - **{{item_name}}**: {{item_description}}
+      {{/items}}
+
+      {{/subsections}}
+
+      {{/sections}}
+    instruction: Define the knowledge sections and content
+    elicit: true
+
+  - id: examples
+    title: Examples
+    type: structured-list
+    template: |
+      ## Examples
+
+      {{#examples}}
+      ### {{example_title}}
+
+      {{example_description}}
+
+      ```{{example_format}}
+      {{example_content}}
+      ```
+
+      {{/examples}}
+    instruction: Provide concrete examples of how this knowledge is applied
+    elicit: true
+
+  - id: references
+    title: References
+    type: bullet-list
+    template: |
+      ## References
+
+      {{#references}}
+      - {{.}}
+      {{/references}}
+    instruction: List sources, documentation, or related materials
+    elicit: true
+
+  - id: maintenance
+    title: Maintenance
+    type: paragraph
+    template: |
+      ## Maintenance
+
+      {{maintenance_info}}
+    instruction: Explain how this knowledge should be kept up-to-date
+    elicit: true

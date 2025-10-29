@@ -1,0 +1,101 @@
+<!-- Powered by FVTeamOfAgents Core -->
+template:
+  id: task-file-template-v1
+  name: BMAD Task File
+  version: 1.0
+  output:
+    format: markdown
+    filename: .bmad-core/tasks/{{task_name}}.md
+    title: "{{task_title}}"
+
+workflow:
+  mode: interactive
+  elicitation: advanced-elicitation
+
+sections:
+  - id: header
+    title: Header
+    type: template-text
+    template: |
+  <!-- Powered by FVTeamOfAgents Core -->
+
+      # {{task_title}}
+    instruction: Generate the standard BMAD task header
+
+  - id: purpose
+    title: Purpose
+    type: paragraph
+    template: |
+      ## Purpose
+
+      {{task_purpose}}
+    instruction: Describe the purpose and goals of this task
+    elicit: true
+
+  - id: sequential-execution
+    title: Sequential Execution Header
+    type: template-text
+    template: |
+      ## SEQUENTIAL Task Execution (Do not proceed until current Task is complete)
+    instruction: Standard BMAD task execution header
+
+  - id: task-steps
+    title: Task Steps
+    type: structured-list
+    template: |
+      {{#steps}}
+      ### {{step_number}}. {{step_title}}
+
+      {{step_description}}
+
+      {{#step_details}}
+      - {{.}}
+      {{/step_details}}
+
+      {{/steps}}
+    instruction: Define the sequential steps for this task
+    elicit: true
+
+  - id: blocking-conditions
+    title: Blocking Conditions
+    type: bullet-list
+    template: |
+      ## Blocking Conditions
+
+      {{#blocking_conditions}}
+      - {{.}}
+      {{/blocking_conditions}}
+    instruction: List conditions that would halt task execution
+    elicit: true
+
+  - id: success-criteria
+    title: Success Criteria
+    type: bullet-list
+    template: |
+      ## Success Criteria
+
+      {{#success_criteria}}
+      - {{.}}
+      {{/success_criteria}}
+    instruction: Define what constitutes successful task completion
+    elicit: true
+
+  - id: dependencies
+    title: Dependencies
+    type: paragraph
+    template: |
+      ## Dependencies
+
+      {{task_dependencies}}
+    instruction: List any files, templates, or other tasks this depends on
+    elicit: true
+
+  - id: outputs
+    title: Outputs
+    type: paragraph
+    template: |
+      ## Outputs
+
+      {{task_outputs}}
+    instruction: Describe what this task produces or generates
+    elicit: true
