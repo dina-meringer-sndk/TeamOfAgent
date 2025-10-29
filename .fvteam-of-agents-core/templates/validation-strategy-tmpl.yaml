@@ -1,0 +1,138 @@
+# Validation Strategy Template
+
+feature_name: ""
+document_type: "validation_strategy"
+generated_date: ""
+agent: "validation_strategist"
+
+## Executive Summary
+executive_summary: |
+  Brief strategic overview of the validation approach for this feature.
+  Include key objectives, approach, and expected outcomes.
+
+## Feature Overview
+feature_overview: |
+  High-level description of the feature being validated.
+  Include scope, boundaries, and key functionality.
+
+feature_domain: ""  # ASIC, FW, System
+feature_scope: ""   # High, Medium, Low
+feature_criticality: ""  # Critical, Important, Standard
+
+## Architecture Analysis
+architecture_analysis: |
+  Strategic analysis of the feature's architecture and validation implications.
+
+architectural_elements:
+  - component: ""
+    description: ""
+    validation_impact: ""
+
+critical_interfaces:
+  - interface: ""
+    type: ""  # Internal, External, Cross-domain
+    risk_level: ""  # High, Medium, Low
+    validation_approach: ""
+
+dependencies:
+  - dependency: ""
+    type: ""  # Feature, System, External
+    impact: ""
+    validation_requirement: ""
+
+## Validation Strategy
+strategic_approach: |
+  High-level validation strategy and methodology.
+
+coverage_strategy: |
+  Strategic approach to coverage planning and execution.
+
+priority_areas:
+  - area: ""
+    priority: ""  # High, Medium, Low
+    rationale: ""
+    validation_approach: ""
+
+validation_phases:
+  - phase: ""
+    objectives: ""
+    success_criteria: ""
+    duration_estimate: ""
+
+## Risk Assessment
+high_level_risks:
+  - risk: ""
+    category: ""  # Technical, Schedule, Resource, Integration
+    probability: ""  # High, Medium, Low
+    impact: ""  # High, Medium, Low
+    mitigation_strategy: ""
+
+mitigation_strategies:
+  - strategy: ""
+    risk_addressed: ""
+    implementation: ""
+    owner: ""
+
+## Resource Strategy
+required_skills:
+  - skill: ""
+    level: ""  # Expert, Intermediate, Basic
+    duration: ""
+    availability: ""
+
+tool_requirements:
+  - tool: ""
+    purpose: ""
+    license_type: ""
+    setup_complexity: ""
+
+environment_needs:
+  - environment: ""
+    type: ""  # Development, Test, Production
+    configuration: ""
+    availability: ""
+
+timeline_considerations:
+  project_phase: ""
+  duration_estimate: ""
+  critical_milestones:
+    - milestone: ""
+      date: ""
+      dependencies: ""
+
+## Success Criteria
+success_criteria: |
+  Clear definition of what constitutes successful validation.
+
+acceptance_criteria:
+  - criterion: ""
+    measurement: ""
+    threshold: ""
+
+## Quality Gates
+quality_gates:
+  - gate: ""
+    phase: ""
+    criteria: ""
+    approval_required: ""
+
+## Next Steps
+next_steps: |
+  Immediate actions and follow-up activities.
+
+action_items:
+  - action: ""
+    owner: ""
+    due_date: ""
+    dependencies: ""
+
+## Document Control
+document_version: "1.0"
+author: "Validation Strategist Agent"
+reviewers: []
+approval_status: "Draft"
+last_updated: ""
+
+## Strategic Recommendations
+recommendations: |
+  Key strategic recommendations based on analysis.

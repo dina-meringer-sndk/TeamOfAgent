@@ -1,0 +1,108 @@
+# Feature Analysis Template
+
+feature_name: ""
+analysis_date: ""
+analyst: "validation_strategist"
+analysis_type: "strategic_feature_analysis"
+
+## Feature Identification
+feature_id: ""
+feature_domain: ""  # ASIC, FW, System
+feature_category: ""
+feature_owner: ""
+
+## Feature Scope
+scope_description: |
+  Detailed description of feature scope and boundaries.
+
+functional_areas:
+  - area: ""
+    description: ""
+    complexity: ""  # High, Medium, Low
+    validation_priority: ""
+
+interfaces:
+  - interface: ""
+    type: ""  # API, Hardware, Protocol
+    direction: ""  # Input, Output, Bidirectional
+    complexity: ""
+    validation_requirement: ""
+
+## Architecture Mapping
+architectural_view: |
+  Strategic view of how this feature fits into the overall architecture.
+
+system_components:
+  - component: ""
+    relationship: ""  # Uses, Provides, Integrates
+    dependency_type: ""  # Strong, Weak, Optional
+    validation_impact: ""
+
+data_flows:
+  - flow: ""
+    source: ""
+    destination: ""
+    data_type: ""
+    validation_approach: ""
+
+## Complexity Analysis
+complexity_factors:
+  - factor: ""
+    impact: ""  # High, Medium, Low
+    mitigation: ""
+
+integration_complexity:
+  overall_rating: ""  # High, Medium, Low
+  complexity_drivers:
+    - driver: ""
+      impact: ""
+      mitigation_approach: ""
+
+## Risk Analysis
+technical_risks:
+  - risk: ""
+    category: ""
+    probability: ""
+    impact: ""
+    detection_difficulty: ""
+
+integration_risks:
+  - risk: ""
+    scope: ""  # Internal, External, Cross-domain
+    impact: ""
+    mitigation: ""
+
+## Validation Considerations
+validation_challenges:
+  - challenge: ""
+    category: ""  # Technical, Resource, Schedule
+    impact: ""
+    approach: ""
+
+validation_opportunities:
+  - opportunity: ""
+    benefit: ""
+    implementation: ""
+
+## Strategic Recommendations
+coverage_approach: |
+  Recommended strategic approach to coverage for this feature.
+
+resource_allocation: |
+  Strategic recommendations for resource allocation.
+
+timeline_considerations: |
+  Key timeline factors and recommendations.
+
+risk_mitigation: |
+  Strategic risk mitigation recommendations.
+
+## Analysis Summary
+key_findings: |
+  Summary of key findings from the feature analysis.
+
+strategic_implications: |
+  Strategic implications for validation planning.
+
+next_steps: |
+  Recommended next steps for validation strategy development.

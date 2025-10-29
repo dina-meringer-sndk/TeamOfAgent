@@ -1,0 +1,199 @@
+# Risk Assessment Template
+
+feature_name: ""
+assessment_date: ""
+assessor: "validation_strategist"
+assessment_type: "strategic_risk_assessment"
+
+## Risk Assessment Overview
+assessment_scope: |
+  Scope and objectives of this risk assessment.
+
+methodology: |
+  Risk assessment methodology and approach used.
+
+## Risk Categories
+
+### Technical Risks
+technical_risks:
+  - risk_id: ""
+    risk_name: ""
+    description: |
+      Detailed description of the technical risk.
+    category: ""  # Design, Implementation, Integration, Performance
+    probability: ""  # High (>70%), Medium (30-70%), Low (<30%)
+    impact: ""  # High, Medium, Low
+    severity: ""  # Critical, Major, Minor
+    detection_difficulty: ""  # High, Medium, Low
+    current_controls: |
+      Existing controls or mitigation measures.
+    residual_risk: ""  # High, Medium, Low
+
+### Integration Risks
+integration_risks:
+  - risk_id: ""
+    risk_name: ""
+    description: |
+      Description of integration-related risk.
+    integration_scope: ""  # Internal, External, Cross-domain
+    interfaces_affected: []
+    probability: ""
+    impact: ""
+    cascade_potential: ""  # High, Medium, Low
+    mitigation_complexity: ""  # High, Medium, Low
+
+### Schedule Risks
+schedule_risks:
+  - risk_id: ""
+    risk_name: ""
+    description: |
+      Schedule-related risk description.
+    impact_on_timeline: ""
+    critical_path_impact: ""  # Yes, No
+    probability: ""
+    impact: ""
+    mitigation_time_required: ""
+
+### Resource Risks
+resource_risks:
+  - risk_id: ""
+    risk_name: ""
+    description: |
+      Resource availability or capability risk.
+    resource_type: ""  # Skills, Tools, Environment, Budget
+    impact_on_validation: ""
+    probability: ""
+    impact: ""
+    alternative_options: |
+      Alternative approaches or resources.
+
+## Risk Analysis
+
+### Risk Priority Matrix
+risk_matrix: |
+  | Risk ID | Risk Name | Probability | Impact | Priority Score | Priority Level |
+  |---------|-----------|-------------|---------|----------------|----------------|
+  | R001    | Example   | Medium      | High    | 15            | High           |
+
+### High Priority Risks
+high_priority_risks:
+  - risk_id: ""
+    risk_name: ""
+    priority_score: ""
+    justification: |
+      Why this risk is considered high priority.
+    immediate_actions: |
+      Actions needed immediately.
+
+### Risk Interdependencies
+risk_dependencies:
+  - primary_risk: ""
+    dependent_risks: []
+    relationship_type: ""  # Triggers, Amplifies, Mitigates
+    combined_impact: ""
+
+## Mitigation Strategies
+
+### Prevention Strategies
+prevention_strategies:
+  - strategy_id: ""
+    strategy_name: ""
+    risks_addressed: []
+    description: |
+      Detailed description of prevention strategy.
+    implementation_approach: |
+      How to implement this strategy.
+    resource_requirements: ""
+    timeline: ""
+    effectiveness_rating: ""  # High, Medium, Low
+    cost_effort: ""  # High, Medium, Low
+
+### Detection Strategies
+detection_strategies:
+  - strategy_id: ""
+    strategy_name: ""
+    risks_monitored: []
+    detection_method: |
+      How risks will be detected.
+    detection_timing: ""  # Early, Medium, Late
+    response_time_required: ""
+    automation_potential: ""  # High, Medium, Low
+
+### Response Strategies
+response_strategies:
+  - strategy_id: ""
+    strategy_name: ""
+    trigger_conditions: |
+      Conditions that trigger this response.
+    response_actions: |
+      Specific actions to take.
+    resource_requirements: ""
+    decision_authority: ""
+    escalation_criteria: ""
+
+## Risk Monitoring Plan
+
+### Monitoring Framework
+monitoring_approach: |
+  Overall approach to risk monitoring.
+
+monitoring_frequency: ""  # Daily, Weekly, Monthly, Milestone-based
+
+key_indicators:
+  - indicator: ""
+    measurement: ""
+    threshold_warning: ""
+    threshold_critical: ""
+    monitoring_method: ""
+
+### Reporting Structure
+reporting_frequency: ""
+reporting_stakeholders: []
+escalation_process: |
+  Process for escalating risks when thresholds are exceeded.
+
+## Contingency Planning
+
+### Contingency Plans
+contingency_plans:
+  - plan_id: ""
+    plan_name: ""
+    trigger_scenario: |
+      Scenario that would trigger this contingency plan.
+    activation_criteria: ""
+    response_actions: |
+      Detailed response actions.
+    resource_requirements: ""
+    timeline: ""
+    recovery_approach: |
+      How to recover from the risk scenario.
+
+### Emergency Procedures
+emergency_procedures: |
+  Procedures for handling critical risk scenarios.
+
+## Risk Assessment Summary
+
+### Key Findings
+key_findings: |
+  Summary of key findings from the risk assessment.
+
+### Overall Risk Profile
+overall_risk_level: ""  # High, Medium, Low
+risk_tolerance: ""  # Within tolerance, Exceeds tolerance
+critical_success_factors: |
+  Factors critical for managing identified risks.
+
+### Strategic Recommendations
+strategic_recommendations: |
+  High-level strategic recommendations for risk management.
+
+immediate_actions: |
+  Actions that should be taken immediately.
+
+### Next Steps
+next_steps: |
+  Recommended next steps for risk management planning.
+
+review_schedule: |
+  When and how this risk assessment should be reviewed and updated.
