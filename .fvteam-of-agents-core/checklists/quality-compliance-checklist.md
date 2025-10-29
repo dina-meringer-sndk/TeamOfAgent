@@ -19,9 +19,9 @@ Execute this checklist during agent creation validation to ensure framework comp
 ## Checklist Items
 
 ### Framework Structure
-- [ ] Uses `.bmad-core/` root directory structure
+- [ ] Uses `.fvteam-of-agents-core/` root directory structure
 - [ ] Has proper folder organization: agents/, tasks/, templates/, checklists/, data/, utils/
-- [ ] Agent prompt file is in `.bmad-core/agents/` directory
+- [ ] Agent prompt file is in `.fvteam-of-agents-core/agents/` directory
 - [ ] All supporting files are in correct subdirectories
 
 ### Agent Prompt File Standards
@@ -77,7 +77,7 @@ Execute this checklist during agent creation validation to ensure framework comp
 - [ ] Exit command properly abandons persona
 
 ### Dependency Management
-- [ ] All dependencies are properly mapped to .bmad-core structure
+- [ ] All dependencies are properly mapped to .fvteam-of-agents-core structure
 - [ ] File references use correct paths and naming
 - [ ] Templates are correctly referenced by tasks
 - [ ] Checklists are properly integrated into workflows

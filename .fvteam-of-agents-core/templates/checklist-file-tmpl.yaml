@@ -1,11 +1,11 @@
-<!-- Powered by FVTeamOfAgents Core -->
+#<!-- Powered by FVTeamOfAgents Core -->
 template:
   id: checklist-file-template-v1
-  name: BMAD Checklist File
+  name: FVTeamOfAgents Checklist File
   version: 1.0
   output:
     format: markdown
-    filename: .bmad-core/checklists/{{checklist_name}}-checklist.md
+    filename: .fvteam-of-agents-core/checklists/{{checklist_name}}-checklist.md
     title: "{{checklist_title}} Checklist"
 
 workflow:
@@ -20,7 +20,7 @@ sections:
   <!-- Powered by FVTeamOfAgents Core -->
 
       # {{checklist_title}} Checklist
-    instruction: Generate the standard BMAD checklist header
+    instruction: Generate the standard FVTeamOfAgents checklist header
 
   - id: purpose
     title: Purpose
