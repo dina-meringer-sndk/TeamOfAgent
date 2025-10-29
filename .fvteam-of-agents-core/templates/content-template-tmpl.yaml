@@ -1,11 +1,11 @@
-<!-- Powered by FVTeamOfAgents Core -->
+#<!-- Powered by FVTeamOfAgents Core -->
 template:
   id: content-template-template-v1
-  name: BMAD Content Template Generator
+  name: FVTeamOfAgents Content Template Generator
   version: 1.0
   output:
     format: yaml
-    filename: .bmad-core/templates/{{content_name}}-tmpl.yaml
+    filename: .fvteam-of-agents-core/templates/{{content_name}}-tmpl.yaml
     title: "{{content_title}} Template"
 
 workflow:

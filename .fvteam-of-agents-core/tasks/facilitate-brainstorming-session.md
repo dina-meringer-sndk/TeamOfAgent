@@ -3,7 +3,7 @@
 
 ## Purpose
 
-Guide the user through an engaging, collaborative brainstorming session to discover and define all requirements for creating a complete BMAD agent ecosystem. Uses proven elicitation techniques from brainstorming-techniques.md to ensure comprehensive requirement gathering while maintaining user engagement and creativity.
+Guide the user through an engaging, collaborative brainstorming session to discover and define all requirements for creating a complete FVTeamOfAgents agent ecosystem. Uses proven elicitation techniques from brainstorming-techniques.md to ensure comprehensive requirement gathering while maintaining user engagement and creativity.
 
 ## SEQUENTIAL Task Execution (Do not proceed until current Task is complete)
 
@@ -122,8 +122,8 @@ For each technique used, capture in real-time:
 **Agent Identity & Purpose:**
 - Use Analogical Thinking: "If your agent were a person in your organization, what would their job title be?"
 - Use Metaphor Mapping: "Complete this sentence: 'My agent is like a [profession/role] because...'"
-- **Target Directory**: "Where should we build this agent's home base? (Provide full path for .bmad-core structure)"
-- **Check Existing Structure**: If .bmad-core exists, analyze and celebrate existing components
+- **Target Directory**: "Where should we build this agent's home base? (Provide full path for .fvteam-of-agents-core structure)"
+- **Check Existing Structure**: If .fvteam-of-agents-core exists, analyze and celebrate existing components
 
 **Core Mission Exploration:**
 - Use First Principles: "What's the most fundamental problem this agent must solve?"
@@ -336,7 +336,7 @@ Generate structured document with these sections:
 ## Enhanced Output Structure
 
 **Comprehensive Requirements Package:**
-- Target directory path for .bmad-core structure creation
+- Target directory path for .fvteam-of-agents-core structure creation
 - Detailed agent identity: name, role, purpose, persona, and behavioral guidelines
 - Rich user context: target audience, detailed use cases, success scenarios
 - Complete file specifications ready for creation with detailed descriptions
@@ -422,7 +422,7 @@ primary_checklist: "facilitative-agent-checklist"
 
 ## Brainstorming Techniques Reference
 
-This session leverages proven BMAD elicitation methods from `brainstorming-techniques.md`:
+This session leverages proven FVTeamOfAgents elicitation methods from `brainstorming-techniques.md`:
 - **Creative Expansion**: What If Scenarios, Analogical Thinking, Reversal/Inversion, First Principles
 - **Structured Frameworks**: SCAMPER Method, Six Thinking Hats, Mind Mapping
 - **Collaborative Building**: "Yes, And..." Building, Brainwriting, Random Stimulation
