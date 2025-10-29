@@ -1,11 +1,11 @@
-<!-- Powered by FVTeamOfAgents Core -->
+#<!-- Powered by FVTeamOfAgents Core -->
 template:
   id: data-file-template-v1
-  name: BMAD Data/Knowledge File
+  name: FVTeamOfAgents Data/Knowledge File
   version: 1.0
   output:
     format: markdown
-    filename: .bmad-core/data/{{data_name}}.md
+    filename: .fvteam-of-agents-core/data/{{data_name}}.md
     title: "{{data_title}}"
 
 workflow:
@@ -17,10 +17,10 @@ sections:
     title: Header
     type: template-text
     template: |
-  <!-- Powered by FVTeamOfAgents Core -->
+  #<!-- Powered by FVTeamOfAgents Core -->
 
       # {{data_title}}
-    instruction: Generate the standard BMAD data file header
+    instruction: Generate the standard FVTeamOfAgents data file header
 
   - id: overview
     title: Overview

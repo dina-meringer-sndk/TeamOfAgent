@@ -3,7 +3,7 @@
 
 ## Purpose
 
-Guide the user through an engaging, collaborative brainstorming session to discover and define all requirements for creating a complete BMAD agent ecosystem. Uses proven elicitation techniques to ensure comprehensive requirement gathering while maintaining user engagement and creativity.
+Guide the user through an engaging, collaborative brainstorming session to discover and define all requirements for creating a complete FVTeamOfAgents agent ecosystem. Uses proven elicitation techniques to ensure comprehensive requirement gathering while maintaining user engagement and creativity.
 
 ## SEQUENTIAL Task Execution (Do not proceed until current Task is complete)
 
@@ -34,7 +34,7 @@ Ask questions one at a time, wait for response, then proceed to next:
 **Q1:** "If your agent were a person in your organization, what would their job title be?"
 *[If skip: LOG "VISION-01: Agent role/title TBD"]*
 
-**Q2:** "Where should we build this agent's home base? (Provide full path for .bmad-core structure)"
+**Q2:** "Where should we build this agent's home base? (Provide full path for .fvteam-of-agents-core structure)"
 *[If skip: LOG "VISION-02: Target directory TBD, using default"]*
 
 **Q3:** "What should we call this agent? (Think of a name that captures its essence)"

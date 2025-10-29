@@ -1,4 +1,4 @@
-<!-- Powered by FVTeamOfAgents Core -->
+#<!-- Powered by FVTeamOfAgents Core -->
 template:
   id: agent-summary-template-v1
   name: Agent Creation Summary
@@ -78,31 +78,31 @@ sections:
       ## Files Created
 
       ### Agent Prompt
-      - `.bmad-core/agents/{{agent_id}}.md` - Main agent definition
+      - `.fvteam-of-agents-core/agents/{{agent_id}}.md` - Main agent definition
 
       ### Task Files
       {{#task_files}}
-      - `.bmad-core/tasks/{{filename}}` - {{description}}
+      - `.fvteam-of-agents-core/tasks/{{filename}}` - {{description}}
       {{/task_files}}
 
       ### Template Files
       {{#template_files}}
-      - `.bmad-core/templates/{{filename}}` - {{description}}
+      - `.fvteam-of-agents-core/templates/{{filename}}` - {{description}}
       {{/template_files}}
 
       ### Checklist Files
       {{#checklist_files}}
-      - `.bmad-core/checklists/{{filename}}` - {{description}}
+      - `.fvteam-of-agents-core/checklists/{{filename}}` - {{description}}
       {{/checklist_files}}
 
       ### Data Files
       {{#data_files}}
-      - `.bmad-core/data/{{filename}}` - {{description}}
+      - `.fvteam-of-agents-core/data/{{filename}}` - {{description}}
       {{/data_files}}
 
       ### Utility Files
       {{#utility_files}}
-      - `.bmad-core/utils/{{filename}}` - {{description}}
+      - `.fvteam-of-agents-core/utils/{{filename}}` - {{description}}
       {{/utility_files}}
     instruction: Document all files created in the ecosystem
 
@@ -158,8 +158,8 @@ sections:
     template: |
       ## Validation Results
 
-      ### BMAD Compliance
-      {{bmad_compliance_status}}
+      ### FVTeamOfAgents Compliance
+      {{fvteam_of_agents_compliance_status}}
 
       ### Agent Creation Checklist
       {{creation_checklist_status}}

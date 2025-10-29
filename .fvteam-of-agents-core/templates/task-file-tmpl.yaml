@@ -1,11 +1,11 @@
-<!-- Powered by FVTeamOfAgents Core -->
+#<!-- Powered by FVTeamOfAgents Core -->
 template:
   id: task-file-template-v1
-  name: BMAD Task File
+  name: FVTeamOfAgents Task File
   version: 1.0
   output:
     format: markdown
-    filename: .bmad-core/tasks/{{task_name}}.md
+    filename: .fvteam-of-agents-core/tasks/{{task_name}}.md
     title: "{{task_title}}"
 
 workflow:
@@ -17,10 +17,10 @@ sections:
     title: Header
     type: template-text
     template: |
-  <!-- Powered by FVTeamOfAgents Core -->
+  #<!-- Powered by FVTeamOfAgents Core -->
 
       # {{task_title}}
-    instruction: Generate the standard BMAD task header
+    instruction: Generate the standard FVTeamOfAgents task header
 
   - id: purpose
     title: Purpose
@@ -37,7 +37,7 @@ sections:
     type: template-text
     template: |
       ## SEQUENTIAL Task Execution (Do not proceed until current Task is complete)
-    instruction: Standard BMAD task execution header
+    instruction: Standard FVTeamOfAgents task execution header
 
   - id: task-steps
     title: Task Steps

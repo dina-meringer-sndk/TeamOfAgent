@@ -13,13 +13,13 @@ Execute this checklist after completing the agent creation process to validate t
 ## Prerequisites
 
 - Agent creation task has been completed
-- All files have been generated in the .bmad-core structure
+- All files have been generated in the .fvteam-of-agents-core structure
 - Brainstorming session requirements are available
 
 ## Checklist Items
 
 ### Agent Prompt File
-- [ ] Agent .md file created in `.bmad-core/agents/`
+- [ ] Agent .md file created in `.fvteam-of-agents-core/agents/`
 - [ ] File follows FVTeamOfAgents agent structure (IDE-FILE-RESOLUTION, activation-instructions, etc.)
 - [ ] Agent name, ID, title, and icon are properly defined
 - [ ] Persona section is complete and accurate
@@ -30,7 +30,7 @@ Execute this checklist after completing the agent creation process to validate t
 
 ### Task Files
 - [ ] All identified workflows have corresponding task .md files
-- [ ] Task files are located in `.bmad-core/tasks/`
+- [ ] Task files are located in `.fvteam-of-agents-core/tasks/`
 - [ ] Each task has clear purpose and sequential execution steps
 - [ ] Blocking conditions and success criteria are defined
 - [ ] Tasks reference appropriate templates and dependencies
@@ -38,7 +38,7 @@ Execute this checklist after completing the agent creation process to validate t
 
 ### Template Files
 - [ ] All content generation needs have corresponding template .yaml files
-- [ ] Templates are located in `.bmad-core/templates/`
+- [ ] Templates are located in `.fvteam-of-agents-core/templates/`
 - [ ] Each template has proper FVTeamOfAgents structure with sections
 - [ ] Variable substitution patterns are defined
 - [ ] Elicitation patterns are included for user input
@@ -46,7 +46,7 @@ Execute this checklist after completing the agent creation process to validate t
 
 ### Checklist Files
 - [ ] All validation needs have corresponding checklist .md files
-- [ ] Checklists are located in `.bmad-core/checklists/`
+- [ ] Checklists are located in `.fvteam-of-agents-core/checklists/`
 - [ ] Each checklist has clear purpose and validation criteria
 - [ ] Prerequisites and when-to-use sections are defined
 - [ ] Checklist items are comprehensive and actionable
@@ -54,14 +54,14 @@ Execute this checklist after completing the agent creation process to validate t
 
 ### Data Files
 - [ ] All knowledge base needs have corresponding data .md files
-- [ ] Data files are located in `.bmad-core/data/`
+- [ ] Data files are located in `.fvteam-of-agents-core/data/`
 - [ ] Each data file has clear overview and purpose
 - [ ] Content is well-organized with examples
 - [ ] References and maintenance information included
 
 ### Utility Files
 - [ ] All file operations have corresponding utility .py files
-- [ ] Utilities are located in `.bmad-core/utils/`
+- [ ] Utilities are located in `.fvteam-of-agents-core/utils/`
 - [ ] Each utility has proper function definitions
 - [ ] Documentation and error handling included
 - [ ] Dependencies and imports are specified
