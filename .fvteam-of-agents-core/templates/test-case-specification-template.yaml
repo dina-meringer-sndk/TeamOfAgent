@@ -1,0 +1,210 @@
+template:
+  id: test-case-specification-template-v1
+  name: Test Case Specification Template
+  version: 1.0
+  output:
+    format: markdown
+    filename: "{{test_name}}_specification.md"
+
+workflow:
+  mode: structured
+  elicitation: detailed
+
+sections:
+  - id: test-header
+    title: Test Case Header
+    type: structured
+    sections:
+      - id: test-name
+        title: Test Name
+        template: "{{test_xml_name}}"
+        validation: "Test_[D|R]_{{feature}}_{{purpose}}"
+        
+      - id: test-priority
+        title: Priority
+        template: "{{priority}}"
+        options: ["P0-Critical", "P1-High", "P2-Medium", "P3-Low"]
+        
+      - id: integration-phase
+        title: Integration Phase
+        template: "{{integration_phase}}"
+        options: ["1-Basic", "2-Cross-Feature", "Final-PLPT"]
+        
+      - id: platform
+        title: Platform
+        template: "{{platform}}"
+        options: ["Model", "HW", "HAPS", "Oven", "Platform", "Cyclone"]
+
+  - id: test-description
+    title: Test Description
+    type: narrative
+    template: |
+      ## Purpose
+      {{test_purpose}}
+      
+      ## Scope
+      {{test_scope}}
+      
+      ## Rationale
+      {{test_rationale}}
+
+  - id: test-prerequisites
+    title: Prerequisites
+    type: structured
+    sections:
+      - id: preconditions
+        title: Preconditions
+        template: |
+          {{#preconditions}}
+          - {{condition}}
+          {{/preconditions}}
+          
+      - id: environment-setup
+        title: Environment Setup
+        template: |
+          **Platform**: {{platform}}
+          **Configuration**: {{configuration}}
+          **Tools Required**: {{tools_required}}
+          
+      - id: dependencies
+        title: Dependencies
+        template: |
+          {{#dependencies}}
+          - {{dependency}}
+          {{/dependencies}}
+
+  - id: test-procedure
+    title: Test Procedure
+    type: sequential-steps
+    template: |
+      ## Test Flow
+      
+      {{#test_steps}}
+      ### Step {{step_number}}: {{step_title}}
+      **Action**: {{action}}
+      **Expected Result**: {{expected_result}}
+      {{#verification}}
+      **Verification**: {{verification_method}}
+      {{/verification}}
+      
+      {{/test_steps}}
+
+  - id: pass-fail-criteria
+    title: Pass/Fail Criteria
+    type: structured
+    template: |
+      ## Success Criteria
+      {{#success_criteria}}
+      - {{criterion}}
+      {{/success_criteria}}
+      
+      ## Failure Conditions
+      {{#failure_conditions}}
+      - {{condition}}
+      {{/failure_conditions}}
+      
+      ## Final Verification
+      {{final_verification}}
+
+  - id: test-data
+    title: Test Data and Parameters
+    type: conditional
+    template: |
+      {{#test_data_required}}
+      ## Test Data Requirements
+      {{#data_sets}}
+      - **{{data_name}}**: {{data_description}}
+      {{/data_sets}}
+      
+      ## Parameters
+      {{#parameters}}
+      - **{{param_name}}**: {{param_value}} ({{param_description}})
+      {{/parameters}}
+      {{/test_data_required}}
+
+  - id: error-handling
+    title: Error Handling
+    type: structured
+    template: |
+      ## Error Scenarios
+      {{#error_scenarios}}
+      - **{{error_type}}**: {{error_response}}
+      {{/error_scenarios}}
+      
+      ## Recovery Procedures
+      {{#recovery_procedures}}
+      - {{procedure}}
+      {{/recovery_procedures}}
+
+  - id: infrastructure-requirements
+    title: Infrastructure Requirements
+    type: conditional
+    template: |
+      {{#infrastructure_needed}}
+      ## Required Infrastructure
+      
+      {{#waypoints_needed}}
+      ### Waypoints
+      {{#waypoints}}
+      - **{{waypoint_name}}**: {{waypoint_purpose}}
+      {{/waypoints}}
+      {{/waypoints_needed}}
+      
+      {{#atb_events_needed}}
+      ### ATB Events
+      {{#atb_events}}
+      - **{{event_name}}**: {{event_purpose}}
+      {{/atb_events}}
+      {{/atb_events_needed}}
+      
+      {{#fbcc_needed}}
+      ### FBCC Requirements
+      {{#fbcc_requirements}}
+      - **{{fbcc_name}}**: {{fbcc_purpose}}
+      {{/fbcc_requirements}}
+      {{/fbcc_needed}}
+      
+      {{#framework_requirements}}
+      ### Framework Requirements
+      {{#framework_needs}}
+      - **{{framework_name}}**: {{framework_purpose}}
+      {{/framework_needs}}
+      {{/framework_requirements}}
+      {{/infrastructure_needed}}
+
+  - id: traceability
+    title: Traceability
+    type: structured
+    template: |
+      ## Requirement Traceability
+      - **Covers Polarion Item**: {{polarion_item}}
+      - **Jira Test Case**: {{jira_case}}
+      - **Related Requirements**: {{related_requirements}}
+      
+      ## Coverage Analysis
+      - **Feature Area**: {{feature_area}}
+      - **Test Category**: {{test_category}}
+      - **Risk Level**: {{risk_level}}
+
+validation-rules:
+  naming-convention:
+    direct-tests: "Test_D_{{feature}}_{{purpose}}"
+    random-tests: "Test_R_{{feature}}_{{purpose}}"
+    performance-tests: "Test_D_{{feature}}_PLPT"
+    
+  platform-validation:
+    model-required: ["waypoints", "complex_error_injection", "precise_temperature"]
+    hw-required: ["real_measurements", "power_current", "performance_latency"]
+    
+  integration-phase-rules:
+    phase-1: "basic_functionality_only"
+    phase-2: "cross_feature_integration"
+    final-phase: "plpt_no_randomization"
+
+quality-checks:
+  - verify_naming_convention
+  - validate_platform_assignment
+  - confirm_infrastructure_requirements
+  - check_traceability_completeness
+  - ensure_procedure_clarity
+  - validate_pass_fail_criteria
