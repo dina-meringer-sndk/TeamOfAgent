@@ -1,0 +1,116 @@
+{
+  "name": "team-agents-extension",
+  "displayName": "Team Agents",
+  "description": "Quick access to team validation agents",
+  "version": "1.0.8",
+  "publisher": "team-agents",
+  "engines": {
+    "vscode": "^1.105.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:workbench.action.chat.open",
+    "onCommand:workbench.action.chat.openInEditor"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "teamAgents.loadValidationStrategist",
+        "title": "Load Validation Strategist Agent",
+        "category": "Team Agents"
+      },
+      {
+        "command": "teamAgents.loadAgentsFactory",
+        "title": "Load Agents Factory",
+        "category": "Team Agents"
+      },
+      {
+        "command": "teamAgents.validation.analyze",
+        "title": "Analyze Architecture"
+      },
+      {
+        "command": "teamAgents.validation.strategy",
+        "title": "Create Validation Strategy"
+      },
+      {
+        "command": "teamAgents.factory.create",
+        "title": "Create Agent"
+      },
+      {
+        "command": "teamAgents.factory.revise",
+        "title": "Revise Agent"
+      }
+    ],
+    "chatCommands": [
+      {
+        "command": "teamAgents.loadValidationStrategist",
+        "title": "validation_strategist",
+        "description": "Load Validation Strategist - Enterprise Strategic Validation Architect"
+      },
+      {
+        "command": "teamAgents.loadAgentsFactory",
+        "title": "agents_factory",
+        "description": "Load Agents Factory - Advanced Agent Ecosystem Architect"
+      }
+    ],
+    "chatParticipants": [
+      {
+        "id": "validation_strategist",
+        "name": "validation_strategist",
+        "fullName": "Validation Strategist",
+        "description": "Enterprise Strategic Validation Architect",
+        "isSticky": true,
+        "commands": [
+          {
+            "name": "validation_strategist",
+            "description": "Load Validation Strategist - Enterprise Strategic Validation Architect"
+          }
+        ]
+      },
+      {
+        "id": "agents_factory", 
+        "name": "agents_factory",
+        "fullName": "Agents Factory",
+        "description": "Advanced Agent Ecosystem Architect",
+        "isSticky": true,
+        "commands": [
+          {
+            "name": "agents_factory",
+            "description": "Load Agents Factory - Advanced Agent Ecosystem Architect"
+          }
+        ]
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "teamAgents.loadValidationStrategist",
+          "when": "true"
+        },
+        {
+          "command": "teamAgents.loadAgentsFactory",
+          "when": "true"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^16.18.126",
+    "@types/vscode": "^1.105.0",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.20.2",
+    "tsx": "^4.20.6",
+    "zod": "^3.25.76"
+  }
+}

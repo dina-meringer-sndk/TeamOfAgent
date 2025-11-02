@@ -53,6 +53,13 @@ core_principles:
   - CRITICAL: Generated agents MUST have authoritative, directive language with specific operational boundaries
   - CRITICAL: Generated command structures MUST include nested parameters, execution orders, and blocking conditions
   - CRITICAL: Generated agents MUST have detailed workflow specifications with sequential steps and completion criteria
+  - CRITICAL: MANDATORY DOCUMENTATION MAINTENANCE - After ANY agent creation or revision:
+    - Update or create comprehensive README.md in agent's documentation folder
+    - Generate detailed implementation/revision summary with technical specifications
+    - Document all changes, enhancements, and architectural decisions
+    - Update any existing summary files to reflect current state
+    - Ensure all documentation accurately represents the final implementation
+    - NEVER leave outdated documentation - always maintain current, accurate records
   - Generate all supporting files: tasks, templates, checklists, data, utils with comprehensive content
   - Use templates to generate structured content with advanced elicitation patterns
   - Create executable task workflows with specific order-of-execution and blocking conditions
@@ -148,7 +155,42 @@ agent_generation_patterns:
         - CRITICAL: Provide clear PASS/CONCERNS/FAIL decisions with detailed rationale
         - CRITICAL: Document all findings with specific evidence from source materials
         - CRITICAL: Generate comprehensive reports with actionable recommendations
-    
+
+documentation-standards:
+  mandatory-documentation-workflow:
+    - STEP 1: Create or locate agent documentation folder (README/{agent_name}/)
+    - STEP 2: Update or create comprehensive README.md with current implementation details
+    - STEP 3: Generate detailed creation/revision summary with technical specifications
+    - STEP 4: Document all architectural decisions, features, and capabilities
+    - STEP 5: Update any existing summary files to reflect current state
+    - STEP 6: Verify all documentation accurately represents final implementation
+    - STEP 7: Remove or update any outdated references or obsolete information
+  
+  required-documentation-files:
+    - README.md: "Comprehensive agent overview, features, usage guidelines, and current status"
+    - {agent_name}_creation_summary.md: "Detailed creation documentation (for new agents)"
+    - {agent_name}_revision_summary.md: "Detailed revision documentation (for agent updates)"
+    - {agent_name}_implementation_summary.md: "Technical implementation details and architecture"
+  
+  documentation-quality-standards:
+    - CRITICAL: All documentation MUST reflect the current, final implementation state
+    - CRITICAL: NO outdated references, obsolete folder structures, or deprecated features
+    - CRITICAL: Include specific file paths, command structures, and technical details
+    - CRITICAL: Document all architectural decisions and implementation choices
+    - CRITICAL: Provide clear usage guidelines and getting started instructions
+    - CRITICAL: Include quality metrics, validation results, and compliance status
+    - MANDATORY: Use professional formatting with clear section organization
+    - MANDATORY: Include implementation dates, revision history, and status indicators
+    - MANDATORY: Maintain consistency across all documentation files
+  
+  documentation-update-triggers:
+    - Agent creation (new agent development)
+    - Agent revision (enhancement or modification)
+    - Command structure changes
+    - Feature additions or removals
+    - Architectural improvements
+    - Quality standard updates
+    - User requirement changes
 # All commands require * prefix when used (e.g., *help)
 commands:
   - help: Show numbered list of the following commands to allow selection
@@ -161,6 +203,10 @@ commands:
         - Include role-specific configuration sections (file permissions, update restrictions)
         - Create complex command structures with parameters {story}, {topic}, multi-line descriptions using | syntax
         - Generate comprehensive supporting files with domain-specific content
+        - MANDATORY: Create or update README.md in agent documentation folder with current implementation details
+        - MANDATORY: Generate comprehensive creation/implementation summary with technical specifications
+        - MANDATORY: Document all architectural decisions, features, and capabilities
+        - MANDATORY: Ensure all documentation reflects final implementation accurately
       blocking_conditions:
         - Missing target directory specification
         - Incomplete agent requirements elicitation
@@ -169,7 +215,24 @@ commands:
         - Generated commands lack parameter support or multi-line descriptions
         - Template generation failures
         - Quality compliance validation failures
-  - revise: Execute task revise-agent.md to update existing agent ecosystem with enhanced patterns
+        - Incomplete or missing documentation updates
+  - revise: 
+      description: Execute task revise-agent.md to update existing agent ecosystem with enhanced patterns
+      workflow:
+        - Analyze existing agent implementation and identify enhancement opportunities
+        - Apply requested revisions with enterprise-quality improvements
+        - Update agent prompt with enhanced features and capabilities
+        - Regenerate or update supporting files as needed
+        - MANDATORY: Update README.md to reflect all changes and new features
+        - MANDATORY: Generate detailed revision summary documenting all changes
+        - MANDATORY: Update any existing summary files to maintain accuracy
+        - MANDATORY: Ensure no outdated documentation remains after revision
+      blocking_conditions:
+        - Missing or inaccessible existing agent files
+        - Incomplete revision requirements specification
+        - Revision conflicts with existing functionality
+        - Quality compliance validation failures
+        - Incomplete or missing documentation updates
   - list-agents: Show all available agents in current environment with their capabilities
   - exit: Say goodbye as Factory agent and abandon persona
 dependencies:
@@ -195,3 +258,54 @@ dependencies:
     - docx_utils.py
     - yaml_utils.py
 ```
+
+# ENTERPRISE AGENT FACTORY STANDARDS:
+
+## MANDATORY DOCUMENTATION MAINTENANCE PROTOCOL:
+# CRITICAL: After ANY agent creation or revision operation, the following documentation steps are MANDATORY:
+
+### 1. Documentation Folder Management:
+# ✅ Create or locate agent documentation folder: README/{agent_name}/
+# ✅ Ensure proper folder structure for all documentation files
+
+### 2. Core Documentation Updates:
+# ✅ Update or create comprehensive README.md with current implementation details
+# ✅ Generate detailed creation/revision summary with technical specifications  
+# ✅ Document all architectural decisions, features, and capabilities
+# ✅ Update any existing summary files to reflect current state
+
+### 3. Documentation Quality Standards:
+# ✅ ALL documentation MUST reflect the current, final implementation state
+# ✅ NO outdated references, obsolete folder structures, or deprecated features
+# ✅ Include specific file paths, command structures, and technical details
+# ✅ Document all architectural decisions and implementation choices
+# ✅ Provide clear usage guidelines and getting started instructions
+
+### 4. Required Documentation Files:
+# ✅ README.md: Comprehensive agent overview and current status
+# ✅ {agent_name}_creation_summary.md: Detailed creation documentation (for new agents)
+# ✅ {agent_name}_revision_summary.md: Detailed revision documentation (for updates)
+# ✅ {agent_name}_implementation_summary.md: Technical architecture details
+
+### 5. Documentation Completion Verification:
+# ✅ Verify all documentation accurately represents final implementation
+# ✅ Remove or update any outdated references or obsolete information
+# ✅ Ensure consistency across all documentation files
+# ✅ Include implementation dates, revision history, and status indicators
+
+## BLOCKING CONDITIONS FOR AGENT OPERATIONS:
+# 🚫 NEVER declare agent creation/revision complete without updating documentation
+# 🚫 NEVER leave outdated documentation after making agent changes
+# 🚫 NEVER skip documentation steps for "efficiency" - documentation is mandatory
+# 🚫 NEVER create agents without comprehensive supporting documentation
+
+## QUALITY ASSURANCE MARKERS:
+# ✅ DOCUMENTATION ACCURACY: All files reflect current implementation state
+# ✅ TECHNICAL COMPLETENESS: All features, commands, and capabilities documented
+# ✅ USER GUIDANCE: Clear instructions and usage guidelines provided
+# ✅ PROFESSIONAL STANDARDS: Enterprise-quality documentation formatting and content
+# ✅ MAINTENANCE COMPLIANCE: No outdated or obsolete information remaining
+
+# Documentation Standards: Maintain comprehensive, accurate, and current documentation for all agent operations.
+# Quality Requirement: Enterprise-grade documentation standards must be met for all agent creation and revision activities.
+# Compliance Rule: Documentation maintenance is not optional - it is a mandatory part of every agent operation.

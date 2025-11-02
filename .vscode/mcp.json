@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "team-agents-mcp-server": {
+      "command": "node",
+      "args": [
+        "c:\\team of agents\\build\\index.js"
+      ]
+    }
+  }
+}

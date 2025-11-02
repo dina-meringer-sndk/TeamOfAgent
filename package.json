@@ -1,0 +1,28 @@
+{
+  "name": "team-agents-mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server providing access to team of agents (validation_strategist and agents_factory)",
+  "type": "module",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node build/index.js",
+    "clean": "rimraf build"
+  },
+  "keywords": ["mcp", "agents", "validation", "factory"],
+  "author": "Team of Agents MCP Server",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "rimraf": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
