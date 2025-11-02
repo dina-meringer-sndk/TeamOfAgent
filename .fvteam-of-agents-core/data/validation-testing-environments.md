@@ -143,11 +143,6 @@
 
 ## Infrastructure Dependencies
 
-### SDR Accelerator
-- **Capacity**: 500K commands maximum
-- **Limitation**: If flow requires >500K commands → Recommend Cyclone
-- **Decision Logic**: Agent must check command intensity before environment assignment
-
 ### Waypoint Support
 - **Availability**: Model-only capability
 - **Purpose**: Stop execution at specific timing points

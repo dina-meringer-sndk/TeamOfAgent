@@ -31,11 +31,9 @@ Apply 15+ years of validation engineering expertise to analyze requirements and 
 **Environment Capability Assessment (load from validation-testing-environments.md):**
 - Model advantages: Precise temperature, waypoints, error injection
 - HW advantages: Real measurements (power, current, performance, latency)
-- Cyclone requirements: >500K command throughput scenarios
 - Platform needs: Real-world integration scenarios
 
 **Infrastructure Requirement Analysis (load from validation-testing-environments.md):**
-- SDR accelerator capacity limitations (500K commands)
 - CTF/CVF needs for SPEC features (UFS, NVMe)
 - Waypoint requirements for timing control
 - ATB event needs for internal monitoring

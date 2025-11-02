@@ -4,7 +4,7 @@ template:
   version: 1.0
   output:
     format: docx
-    filename: "{{feature_name}}_FVT_Validation_Plan.docx"
+    filename: "{{feature_name}}_Validation_Plan.docx"
     confluence: true
 
 workflow:
@@ -34,8 +34,10 @@ sections:
       - id: introduction
         title: Introduction
         template: |
-          This document is FVT Validation plan for {{feature_name}}.
+          This document is Validation plan for {{feature_name}}.
           The following Validation plan is based on System validation strategy and/or FW architecture document and/or FW design document and/or MSV TF.
+          
+          <!-- Generated using validation-plan-template-on {{generation_date}} -->
 
       - id: general-information
         title: General Information

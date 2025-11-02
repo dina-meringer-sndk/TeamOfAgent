@@ -14,12 +14,10 @@ Analyze architecture and validation strategy documents to create a comprehensive
 ## Process Overview
 
 **4 Sequential Phases:**
-1. **Document Collection** (5 min) - Gather strategy, architecture, and supporting documents
-2. **Analysis & Verification** (15-20 min) - Extract information and verify understanding with user
-3. **Gap Identification** (10 min) - Find missing elements through systematic analysis and user input
-4. **Output Generation** (5 min) - Create structured Markdown analysis report
-
-**Total Time: 35-40 minutes**
+1. **Document Collection** - Gather strategy, architecture, and supporting documents
+2. **Analysis & Verification** - Extract information and verify understanding with user
+3. **Gap Identification** - Find missing elements through systematic analysis and user input
+4. **Output Generation** - Create structured Markdown analysis report
 
 ## Critical Rules
 
@@ -28,20 +26,48 @@ Analyze architecture and validation strategy documents to create a comprehensive
 - **Complete extraction**: Capture specific technical identifiers, not generic descriptions
 - **Comprehensive output**: Include ALL conversation content in narrative format
 
-## Phase 1: Document Collection
+## Phase 1: Document Collection and Parsing
 
-**Ask for documents in sequence:**
+**Ask for documents from user:**
 
-1. **"Please provide your validation strategy document (Word/PDF format)"**
+1. **"Please provide your validation strategy document (DOCX/PDF/text format)"**
    - Wait for strategy document upload
+   - Parse automatically using appropriate parser based on file type
 
-2. **"Please provide the architecture document referenced in the strategy"**  
+2. **"Please provide the architecture document referenced in the strategy (DOCX/PDF/text format)"**  
    - Wait for architecture document upload
+   - Parse automatically using appropriate parser based on file type
 
 3. **"Upload any additional charts, diagrams, or reference materials (optional)"**
    - Wait for response (may be "none")
 
-**Only proceed to Phase 2 after receiving all documents.**
+**Document Parsing:**
+
+**For DOCX files - Use the generic DOCX to TXT converter:**
+1. Convert DOCX to TXT using `docx_to_txt.py` script:
+   ```
+   python docx_to_txt.py "<docx_filename>"
+   ```
+   This will create a `.txt` file with the same name in the same directory
+
+2. Read the converted TXT file to analyze content:
+   ```
+   Read the generated .txt file to access the full document content
+   ```
+
+3. **Store content in memory** - Keep the full text content available for analysis and to answer user questions about the document throughout the entire session
+
+**For other file types:**
+- PDF files: Parse using appropriate method
+- Text/MD files: Read directly
+- Extract all content as text for analysis
+
+**Content Retention:**
+- **CRITICAL**: After parsing, keep ALL document content in context for the entire analysis session
+- Be prepared to answer ANY question about the document content at any time
+- Reference specific sections, technical details, or any information from the parsed documents when needed
+
+**Only proceed to Phase 2 after receiving, parsing, and loading all documents into memory.**
 
 ## Phase 2: Analysis & Verification
 
@@ -119,7 +145,6 @@ The analysis MUST contain a dedicated "Technical Inventory" section within "Feat
 
 **Feature-Specific Infrastructure Analysis:**
 - SPEC Feature Infrastructure: CTF/CVF requirements analysis
-- High-Throughput Requirements: Cyclone requirement calculation (>500K commands)
 - Timing Validation Methods: Smart Report, HBA Counters, FBCC Diagnostics, ATB/waypoint needs
 
 **For each potential infrastructure need:**

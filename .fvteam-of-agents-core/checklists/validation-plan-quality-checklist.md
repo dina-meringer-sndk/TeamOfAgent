@@ -78,7 +78,6 @@ Comprehensive quality assurance checklist to ensure validation plans meet enterp
 
 #### ✅ Infrastructure Requirement Validation
 - [ ] CTF/CVF needs identified for SPEC features
-- [ ] SDR accelerator capacity checked (500K limit)
 - [ ] Waypoint requirements documented for Model tests
 - [ ] ATB event needs identified for FVT tests
 - [ ] FBCC requirements documented for diagnostic access

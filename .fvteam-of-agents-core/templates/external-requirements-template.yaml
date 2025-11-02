@@ -270,7 +270,6 @@ validation-rules:
     attributes: "must_be_predefined"
     
   capacity-limits:
-    sdr_accelerator: "500k_commands_max"
     cyclone_trigger: "high_throughput_scenarios"
 
 quality-checks:
