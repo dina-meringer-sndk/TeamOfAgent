@@ -11,8 +11,6 @@ Execute comprehensive quality assurance validation using all available checklist
 **Load all available quality checklists:**
 - validation-plan-quality-checklist.md
 - stakeholder-satisfaction-checklist.md
-- technical-feasibility-checklist.md (if available)
-- failure-mode-prevention-checklist.md (if available)
 
 **Initialize quality validation environment:**
 - Set up systematic validation process
@@ -59,7 +57,6 @@ Execute comprehensive quality assurance validation using all available checklist
 **Infrastructure Feasibility Assessment:**
 - Validate all infrastructure requirements are realistic
 - Confirm CTF/CVF requirements for SPEC features
-- Verify SDR accelerator capacity considerations
 - Validate waypoint/ATB event requirements
 - Confirm environment assignments are technically sound
 
@@ -72,7 +69,7 @@ Execute comprehensive quality assurance validation using all available checklist
 ### 5. Content Quality Validation
 
 **Documentation Quality Assessment:**
-- Validate FVT template compliance
+- Validate template compliance
 - Verify test case completeness and clarity
 - Confirm external requirements specification accuracy
 - Validate traceability and coverage completeness
