@@ -51,29 +51,28 @@ sections:
           | Environment | {{environment}} |
           | Project | {{project}} |
           | Applies to Protocols | {{protocols}} |
-          | Location in VLD branch | {{vld_location}} |
           | VLD epic | {{vld_epic}} |
 
       - id: reference-documents
         title: Reference Documents
         type: table
         template: |
-          | Item | Name (Linked) | Revision Used |
+          | Name (Linked) | Revision Used |
           |------|---------------|---------------|
-          | 1 | System Validation Strategy Doc | {{strategy_revision}} |
-          | 2 | FW Arch Doc | {{arch_revision}} |
-          | 3 | FW Design Doc | {{design_revision}} |
-          | 4 | MS Spec (If relevant) | {{spec_revision}} |
-          | 5 | MS TO (If relevant) | {{to_revision}} |
-          | 6 | MSV TF (If relevant) | {{msv_revision}} |
-          | 7 | Test SW Design | {{test_sw_revision}} |
+          | System Validation Strategy Doc | {{strategy_revision}} |
+          | FW Arch Doc | {{arch_revision}} |
+          | FW Design Doc | {{design_revision}} |
+          | MS Spec (If relevant) | {{spec_revision}} |
+          | MS TO (If relevant) | {{to_revision}} |
+          | MSV TF (If relevant) | {{msv_revision}} |
+          |Test SW Design | {{test_sw_revision}} |
 
       - id: terms-abbreviations
         title: Terms and Abbreviations
         type: table
         template: |
-          | Abbreviation | Interpretation |
-          |--------------|---------------|
+          | Acronym | Description |
+          |---------|---------------|
           {{#terms}}
           | {{abbreviation}} | {{meaning}} |
           {{/terms}}

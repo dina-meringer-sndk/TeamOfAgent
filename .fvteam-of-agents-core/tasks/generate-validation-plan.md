@@ -6,17 +6,20 @@ To generate comprehensive validation plans using the analyzed strategy requireme
 
 ## Knowledge Base Integration
 
-**Load and apply comprehensive domain expertise from existing knowledge bases. This knowledge is for design decisions but should NOT be included as detailed explanations in validation plan documents.**
+**CRITICAL: Internal Knowledge Base Usage Policy**
+
+**Load and apply comprehensive domain expertise from existing knowledge bases. This knowledge is EXCLUSIVELY for design decisions and methodology guidance but must NEVER be included as detailed explanations in validation plan documents.**
 
 ### Required Knowledge Base Files
 1. **domain-expertise-database.md** - Load complete 15+ years validation engineering expertise
 2. **validation-testing-environments.md** - Load complete environment capabilities and constraints
+3. **All files in the 'data' folder** - Reference for methodology and decision-making only
 
 ### Application Instructions
-- Apply all strategic frameworks from domain-expertise-database.md
-- Use environment decision matrix from validation-testing-environments.md
-- Follow validation method hierarchy and quality assurance frameworks
-- Reference but do not duplicate methodology explanations in output documents
+- **SYNTHESIZE, DON'T COPY**: Generate original content based on principles and guidelines, not explanations
+- **USE FOR DECISIONS ONLY**: Apply strategic frameworks, decision matrices, and quality frameworks internally
+- **NO DIRECT CONTENT**: No verbatim text, quotes, or methodology explanations from knowledge base files
+- **PROFESSIONAL OUTPUT**: Generated validation plan should read as feature-specific expert work, not training material
 
 ## SEQUENTIAL Task Execution (Do not proceed until current Task is complete)
 
@@ -263,6 +266,7 @@ To generate comprehensive validation plans using the analyzed strategy requireme
 - Quality assurance validation passed
 - Stakeholder review readiness confirmed
 - Zero gaps in coverage or technical feasibility
+- **No content from knowledge base files (data folder) included directly in generated documents**
 
 ## Blocking Conditions
 
