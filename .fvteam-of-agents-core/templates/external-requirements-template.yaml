@@ -1,0 +1,280 @@
+template:
+  id: external-requirements-template-v1
+  name: External Requirements Template
+  version: 1.0
+  output:
+    format: markdown
+    filename: "{{feature_name}}_External_Requirements.md"
+
+workflow:
+  mode: structured
+  elicitation: systematic
+
+sections:
+  - id: requirements-header
+    title: External Requirements Header
+    type: structured
+    template: |
+      # External Requirements for {{feature_name}}
+      
+      **Feature**: {{feature_name}}
+      **Project**: {{project_name}}
+      **Version**: {{version}}
+      **Date**: {{date}}
+      **Owner**: {{requirements_owner}}
+
+  - id: fw-requirements
+    title: Firmware Requirements
+    type: structured
+    sections:
+      - id: waypoints
+        title: Waypoints
+        type: table
+        template: |
+          ## Waypoints (Model Environment Only)
+          
+          | Name | Parameters | Description | Status | Priority | Due Date |
+          |------|------------|-------------|--------|----------|----------|
+          {{#waypoints}}
+          | {{name}} | {{parameters}} | {{description}} | {{status}} | {{priority}} | {{due_date}} |
+          {{/waypoints}}
+          
+          **Note**: Waypoints are only available in Model testing environment for precise timing control.
+          
+      - id: atb-events
+        title: ATB Events
+        type: table
+        template: |
+          ## ATB Events (Internal Monitoring)
+          
+          | Name | Parameters | Description | Status | Priority | Due Date |
+          |------|------------|-------------|--------|----------|----------|
+          {{#atb_events}}
+          | {{name}} | {{parameters}} | {{description}} | {{status}} | {{priority}} | {{due_date}} |
+          {{/atb_events}}
+          
+          **Note**: ATB events are internal-only. For customer-accessible monitoring, use FBCC capabilities.
+          
+      - id: fbcc
+        title: FBCC Requirements
+        type: table
+        template: |
+          ## FBCC (Customer Diagnostic Access)
+          
+          | Name | Parameters | Description | Status | Priority | Due Date |
+          |------|------------|-------------|--------|----------|----------|
+          {{#fbcc_requirements}}
+          | {{name}} | {{parameters}} | {{description}} | {{status}} | {{priority}} | {{due_date}} |
+          {{/fbcc_requirements}}
+          
+          **Note**: FBCC provides customer-accessible diagnostic capabilities alternative to internal ATB events.
+
+      - id: firmware-support
+        title: General Firmware Support
+        type: narrative
+        template: |
+          ## General Firmware Support Requirements
+          
+          {{#general_fw_requirements}}
+          ### {{requirement_category}}
+          **Description**: {{description}}
+          **Rationale**: {{rationale}}
+          **Implementation Notes**: {{implementation_notes}}
+          **Status**: {{status}}
+          **Owner**: {{owner}}
+          **Due Date**: {{due_date}}
+          
+          {{/general_fw_requirements}}
+
+  - id: infrastructure-requirements
+    title: Infrastructure Requirements
+    type: structured
+    sections:
+      - id: livet-requirements
+        title: Livet (Model Environment)
+        type: table
+        template: |
+          ## Livet Model Environment Requirements
+          
+          | Requirement | Description | Rationale | Due Date | Owner |
+          |-------------|-------------|-----------|----------|-------|
+          {{#livet_requirements}}
+          | {{requirement}} | {{description}} | {{rationale}} | {{due_date}} | {{owner}} |
+          {{/livet_requirements}}
+          
+          **Capabilities Needed**:
+          - Error injection precision and control
+          - Timing control mechanisms
+          - Simulation environment setup
+
+      - id: vtf-ctf-requirements
+        title: VTF/CTF Framework
+        type: table
+        template: |
+          ## VTF/CTF Validation Framework Requirements
+          
+          | Requirement | Description | Feature Type | Due Date | Owner |
+          |-------------|-------------|--------------|----------|-------|
+          {{#vtf_ctf_requirements}}
+          | {{requirement}} | {{description}} | {{feature_type}} | {{due_date}} | {{owner}} |
+          {{/vtf_ctf_requirements}}
+          
+          **SPEC Feature Notes**:
+          - New SPEC features (UFS, NVMe) require attribute/property setup
+          - Infrastructure must support feature before test creation
+          - Framework enhancements needed for new capabilities
+
+      - id: sv-infra-requirements
+        title: System Validation Infrastructure
+        type: table
+        template: |
+          ## SV Infrastructure Requirements
+          
+          | Requirement | Description | Component | Due Date | Owner |
+          |-------------|-------------|-----------|----------|-------|
+          {{#sv_infra_requirements}}
+          | {{requirement}} | {{description}} | {{component}} | {{due_date}} | {{owner}} |
+          {{/sv_infra_requirements}}
+          
+          **Infrastructure Components**:
+          - Test environment setup and configuration
+          - Tool and utility availability
+          - Reporting and analysis capabilities
+          - Integration with existing systems
+
+  - id: environment-requirements
+    title: Environment Requirements
+    type: structured
+    sections:
+      - id: environment-allocation
+        title: Environment Allocation
+        type: narrative
+        template: |
+          ## Environment Allocation Requirements
+          
+          {{#environment_allocations}}
+          ### {{environment_name}} Environment
+          **Tests Allocated**: {{test_count}} tests
+          **Rationale**: {{allocation_rationale}}
+          **Requirements**:
+          {{#requirements}}
+          - {{requirement}}
+          {{/requirements}}
+          
+          **Constraints**:
+          {{#constraints}}
+          - {{constraint}}
+          {{/constraints}}
+          
+          {{/environment_allocations}}
+
+      - id: capacity-requirements
+        title: Capacity Requirements
+        type: structured
+        template: |
+          ## Capacity and Performance Requirements
+          
+          ### SDR Accelerator Considerations
+          {{#sdr_considerations}}
+          **High-Throughput Tests**: {{high_throughput_count}}
+          **Command Volume**: {{max_command_volume}}
+          **Cyclone Required**: {{cyclone_required}}
+          **Rationale**: {{cyclone_rationale}}
+          {{/sdr_considerations}}
+          
+          ### Environment Capacity Needs
+          {{#capacity_needs}}
+          **{{environment}}**: {{capacity_requirement}}
+          {{/capacity_needs}}
+
+  - id: timeline-dependencies
+    title: Timeline and Dependencies
+    type: structured
+    template: |
+      ## Implementation Timeline
+      
+      ### Critical Path Dependencies
+      {{#critical_dependencies}}
+      - **{{dependency}}**: {{description}} (Due: {{due_date}})
+      {{/critical_dependencies}}
+      
+      ### Phase Dependencies
+      {{#phase_dependencies}}
+      ### Phase {{phase_number}}: {{phase_name}}
+      **Dependencies**:
+      {{#dependencies}}
+      - {{dependency}} (Owner: {{owner}}, Due: {{due_date}})
+      {{/dependencies}}
+      **Blocking Conditions**:
+      {{#blocking_conditions}}
+      - {{condition}}
+      {{/blocking_conditions}}
+      
+      {{/phase_dependencies}}
+
+  - id: risk-mitigation
+    title: Risk Mitigation
+    type: structured
+    template: |
+      ## Risk Assessment and Mitigation
+      
+      ### High-Risk Requirements
+      {{#high_risk_requirements}}
+      **Risk**: {{risk_description}}
+      **Impact**: {{impact_level}} - {{impact_description}}
+      **Mitigation**: {{mitigation_strategy}}
+      **Contingency**: {{contingency_plan}}
+      **Owner**: {{risk_owner}}
+      
+      {{/high_risk_requirements}}
+      
+      ### Infrastructure Risks
+      {{#infrastructure_risks}}
+      **Component**: {{component}}
+      **Risk**: {{risk}}
+      **Mitigation**: {{mitigation}}
+      
+      {{/infrastructure_risks}}
+
+  - id: validation-criteria
+    title: Validation Criteria
+    type: structured
+    template: |
+      ## Requirement Validation Criteria
+      
+      ### Acceptance Criteria
+      {{#acceptance_criteria}}
+      **{{requirement_category}}**:
+      {{#criteria}}
+      - {{criterion}}
+      {{/criteria}}
+      
+      {{/acceptance_criteria}}
+      
+      ### Validation Methods
+      {{#validation_methods}}
+      **{{requirement}}**: {{validation_method}}
+      {{/validation_methods}}
+
+validation-rules:
+  waypoint-constraints:
+    environment: "model_only"
+    purpose: "timing_control"
+    
+  atb-event-constraints:
+    access: "internal_only"
+    customer_alternative: "fbcc"
+    
+  spec-feature-rules:
+    new_features: "require_ctf_cvf_setup"
+    attributes: "must_be_predefined"
+    
+  capacity-limits:
+    cyclone_trigger: "high_throughput_scenarios"
+
+quality-checks:
+  - verify_environment_compatibility
+  - validate_infrastructure_feasibility
+  - confirm_timeline_realism
+  - check_dependency_completeness
+  - ensure_risk_mitigation_adequacy

@@ -1,0 +1,382 @@
+template:
+  id: validation-plan-template-v1
+  name: Validation Plan Template
+  version: 1.0
+  output:
+    format: docx
+    filename: "{{feature_name}}_Validation_Plan.docx"
+    confluence: true
+
+workflow:
+  mode: structured
+  elicitation: comprehensive
+
+sections:
+  - id: revision-history
+    title: Revision History
+    type: table
+    headers: ["Revision", "Date", "Description of Change", "Author(s)"]
+    rows: 3
+    template: |
+      | Revision | Date | Description of Change | Author(s) |
+      |----------|------|----------------------|-----------|
+      | {{revision}} | {{date}} | {{change_description}} | {{author}} |
+
+  - id: table-of-contents
+    title: Table of Contents
+    type: auto-generated
+    includes: ["tables", "figures"]
+
+  - id: overview
+    title: Overview
+    type: structured
+    sections:
+      - id: introduction
+        title: Introduction
+        template: |
+          This document is Validation plan for {{feature_name}}.
+          The following Validation plan is based on System validation strategy and/or FW architecture document and/or FW design document and/or MSV TF.
+          
+          <!-- Generated using validation-plan-template-on {{generation_date}} -->
+
+      - id: general-information
+        title: General Information
+        type: table
+        template: |
+          | Field | Value |
+          |-------|-------|
+          | Package Name | {{package_name}} |
+          | SV POC | {{sv_poc}} |
+          | FW POC | {{fw_poc}} |
+          | Environment | {{environment}} |
+          | Project | {{project}} |
+          | Applies to Protocols | {{protocols}} |
+          | VLD epic | {{vld_epic}} |
+
+      - id: reference-documents
+        title: Reference Documents
+        type: table
+        template: |
+          | Name (Linked) | Revision Used |
+          |------|---------------|---------------|
+          | System Validation Strategy Doc | {{strategy_revision}} |
+          | FW Arch Doc | {{arch_revision}} |
+          | FW Design Doc | {{design_revision}} |
+          | MS Spec (If relevant) | {{spec_revision}} |
+          | MS TO (If relevant) | {{to_revision}} |
+          | MSV TF (If relevant) | {{msv_revision}} |
+          |Test SW Design | {{test_sw_revision}} |
+
+      - id: terms-abbreviations
+        title: Terms and Abbreviations
+        type: table
+        template: |
+          | Acronym | Description |
+          |---------|---------------|
+          {{#terms}}
+          | {{abbreviation}} | {{meaning}} |
+          {{/terms}}
+
+  - id: background
+    title: Background
+    type: narrative
+    template: |
+      {{background_content}}
+      
+      {{#flow_charts}}
+      {{chart_content}}
+      {{/flow_charts}}
+      
+      {{#architecture_diagrams}}
+      {{diagram_content}}
+      {{/architecture_diagrams}}
+
+  - id: validation-strategy
+    title: Validation Strategy
+    type: narrative
+    template: |
+      {{strategy_narrative}}
+      
+      Key validation approaches:
+      - {{dvt_approach}}
+      - {{fvt_approach}}
+      - {{performance_approach}}
+      - {{stress_approach}}
+      
+      Environment allocation rationale:
+      {{environment_rationale}}
+
+  - id: test-cases
+    title: Test Cases
+    type: hierarchical
+    sections:
+      - id: preconditions
+        title: Precondition (Optional)
+        type: conditional
+        template: |
+          {{#preconditions}}
+          | Field | Value |
+          |-------|-------|
+          | Precondition Name | {{name}} |
+          | Integration Phase | {{phase}} |
+          | Platform | {{platform}} |
+          | Description | {{description}} |
+          | Flow | {{flow_steps}} |
+          {{/preconditions}}
+
+      - id: functional-tests
+        title: Functional
+        type: test-case-group
+        template: |
+          {{#functional_tests}}
+          ### {{test_name}}
+          
+          | Field | Value |
+          |-------|-------|
+          | Test Name | {{test_xml_name}} |
+          | Priority | {{priority}} |
+          | Integration Phase | {{phase}} |
+          | Platform | {{platform}} |
+          | Description | {{description}} |
+          | Precondition | {{precondition}} |
+          | Test Flow | {{test_flow}} |
+          | Covers Polarion item | {{polarion_item}} |
+          | Jira Test Case | {{jira_case}} |
+          {{/functional_tests}}
+
+      - id: invalid-tests
+        title: Invalid
+        type: test-case-group
+        template: |
+          {{#invalid_tests}}
+          ### {{test_name}}
+          
+          | Field | Value |
+          |-------|-------|
+          | Test Name | {{test_xml_name}} |
+          | Priority | {{priority}} |
+          | Integration Phase | {{phase}} |
+          | Platform | {{platform}} |
+          | Description | {{description}} |
+          | Precondition | {{precondition}} |
+          | Test Flow | {{test_flow}} |
+          | Covers Polarion item | {{polarion_item}} |
+          | Jira Test Case | {{jira_case}} |
+          {{/invalid_tests}}
+
+      - id: exception-tests
+        title: Exceptions
+        type: structured
+        sections:
+          - id: read-failures
+            title: Read Failures
+            type: test-case-group
+          - id: program-failures
+            title: Program Failures
+            type: test-case-group
+          - id: erase-failures
+            title: Erase Failures
+            type: test-case-group
+
+      - id: reset-abort-vdet
+        title: Resets, Aborts and VDET
+        type: structured
+        sections:
+          - id: gsd
+            title: GSD
+            type: test-case-group
+          - id: ugsd-aborts
+            title: UGSD / Aborts
+            type: test-case-group
+          - id: vdet
+            title: VDET
+            type: test-case-group
+
+      - id: cross-features
+        title: Cross Features
+        type: test-case-group
+
+      - id: smart-report
+        title: Smart Report
+        type: conditional
+        template: |
+          {{#smart_report_needed}}
+          Smart report counter verification for this package:
+          {{smart_report_details}}
+          {{/smart_report_needed}}
+
+      - id: performance
+        title: Performance
+        type: test-case-group
+        naming: "Test_D_{{feature}}_PLPT"
+
+      - id: latency
+        title: Latency
+        type: test-case-group
+        naming: "Test_D_{{feature}}_PLPT"
+
+      - id: power
+        title: Power
+        type: test-case-group
+        naming: "Test_D_{{feature}}_PLPT"
+
+      - id: thermal
+        title: Thermal
+        type: test-case-group
+
+      - id: customer-scenarios
+        title: Customer Scenarios
+        type: narrative
+        template: |
+          {{customer_scenario_content}}
+          
+          Relevant traces consultation with SV architect:
+          {{trace_details}}
+
+      - id: stress
+        title: Stress
+        type: reference
+        template: |
+          Link to Cyclone relevant test design doc: {{cyclone_doc_link}}
+
+      - id: platforms
+        title: Platforms
+        type: reference
+        template: |
+          Link to Platform relevant test design doc: {{platform_doc_link}}
+
+  - id: tests-validation
+    title: Tests Validation
+    type: structured
+    sections:
+      - id: pre-integration
+        title: Pre-Integration
+        template: |
+          We don't see the value to invest on unit tests (low ROI) and recommend getting FW branch early (during FW cross-IP integration) to stabilize the test prior to integration start.
+
+      - id: legacy-products
+        title: Legacy Products (Optional)
+        template: |
+          {{#legacy_testing}}
+          {{legacy_content}}
+          {{/legacy_testing}}
+
+      - id: unit-tests
+        title: Unit Tests (Optional)
+        template: |
+          {{#unit_testing}}
+          {{unit_test_content}}
+          {{/unit_testing}}
+
+  - id: coverage
+    title: Coverage
+    type: narrative
+    template: |
+      TBD after we define Bullseye for integrations.
+      Probably will include relevant feature module to be verified by Bullseye – folders, files, etc.
+      
+      {{#coverage_details}}
+      {{coverage_content}}
+      {{/coverage_details}}
+
+  - id: external-requirements
+    title: External Requirements
+    type: structured
+    sections:
+      - id: fw-requirements
+        title: FW
+        type: structured
+        sections:
+          - id: waypoints
+            title: Waypoints
+            type: table
+            template: |
+              | Name | Parameters | Description | Exist/Not Exist/Requires Modification |
+              |------|------------|-------------|----------------------------------------|
+              {{#waypoints}}
+              | {{name}} | {{parameters}} | {{description}} | {{status}} |
+              {{/waypoints}}
+
+          - id: fbcc
+            title: FBCC
+            type: table
+            template: |
+              | Name | Parameters | Description | Exist/Not Exist/Requires Modification |
+              |------|------------|-------------|----------------------------------------|
+              {{#fbcc_requirements}}
+              | {{name}} | {{parameters}} | {{description}} | {{status}} |
+              {{/fbcc_requirements}}
+
+          - id: atb-events
+            title: ATB Events
+            type: table
+            template: |
+              | Name | Parameters | Description | Exist/Not Exist/Requires Modification |
+              |------|------------|-------------|----------------------------------------|
+              {{#atb_events}}
+              | {{name}} | {{parameters}} | {{description}} | {{status}} |
+              {{/atb_events}}
+
+      - id: livet-requirements
+        title: Livet
+        type: table
+        template: |
+          | Requirement | Description | Due Date |
+          |-------------|-------------|----------|
+          {{#livet_requirements}}
+          | {{requirement}} | {{description}} | {{due_date}} |
+          {{/livet_requirements}}
+
+      - id: vtf-ctf-requirements
+        title: VTF/CTF
+        type: table
+        template: |
+          | Requirement | Description | Due Date |
+          |-------------|-------------|----------|
+          {{#vtf_ctf_requirements}}
+          | {{requirement}} | {{description}} | {{due_date}} |
+          {{/vtf_ctf_requirements}}
+
+      - id: sv-infra-requirements
+        title: SV Infra
+        type: table
+        template: |
+          | Requirement | Description | Due Date |
+          |-------------|-------------|----------|
+          {{#sv_infra_requirements}}
+          | {{requirement}} | {{description}} | {{due_date}} |
+          {{/sv_infra_requirements}}
+
+  - id: open-issues
+    title: Open Issues
+    type: table
+    template: |
+      | Issue | Description | Owner | Status | Due Date |
+      |-------|-------------|-------|--------|----------|
+      {{#open_issues}}
+      | {{issue_id}} | {{description}} | {{owner}} | {{status}} | {{due_date}} |
+      {{/open_issues}}
+
+validation-rules:
+  test-naming:
+    direct-tests: "Test_D_{{feature}}_{{purpose}}"
+    random-tests: "Test_R_{{feature}}_{{purpose}}"
+    performance-tests: "Test_D_{{feature}}_PLPT"
+  
+  environment-allocation:
+    model-advantages: ["precise_temperature", "waypoints", "error_injection"]
+    hw-advantages: ["real_measurements", "power_current", "performance_latency"]
+    
+  integration-phases:
+    phase-1: "basic_functionality"
+    phase-2: "cross_features_stress"
+    final-phase: "plpt_testing"
+
+quality-checks:
+  - verify_test_naming_conventions
+  - validate_environment_assignments
+  - confirm_infrastructure_requirements
+  - check_stakeholder_alignment
+  - ensure_traceability_coverage
+  - prevent_test_bloat
+  - verify_description_completeness
